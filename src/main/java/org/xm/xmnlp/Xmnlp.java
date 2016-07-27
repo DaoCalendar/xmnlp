@@ -30,8 +30,17 @@ import static org.xm.xmnlp.util.Predefine.logger;
  */
 public class Xmnlp {
     public static final class Config {
-        public static boolean DEBUG = false; // 默认关闭调试
+        /**
+         * 默认关闭调试
+         */
+        public static boolean DEBUG = false;
+        /**
+         * 核心词典路径
+         */
         public static String CoreDictionaryPath = "data/dictionary/CoreNatureDictionary.txt";
+        /**
+         * 核心词典词性转移矩阵路径
+         */
         public static String CoreDictionaryTransformMatrixDictionaryPath = "data/dictionary/CoreNatureDictionary.tr.txt";
         /**
          * 用户自定义词典路径
@@ -195,8 +204,7 @@ public class Xmnlp {
                 ShowTermNature = "true".equals(p.getProperty("ShowTermNature", "true"));
                 Normalization = "true".equals(p.getProperty("Normalization", "false"));
             } catch (Exception e) {
-                StringBuffer sbInfo = new StringBuffer("----------tips--------\n " +
-                        "make sure the xmnlp.properties is exist.");
+                StringBuffer sbInfo = new StringBuffer("make sure the xmnlp.properties is exist.");
                 String classPath = (String) System.getProperties().get("java.class.PATHS");
                 if (classPath != null) {
                     for (String path : classPath.split(File.pathSeparator)) {
@@ -209,10 +217,10 @@ public class Xmnlp {
                         "Webapp/WEB-INF/lib\n" +
                         "Webapp/WEB-INF/classes\n" +
                         "Appserver/lib\n" +
-                        "JRE/lib\n");
-                sbInfo.append("并且编辑root=PARENT/PATHS/to/your/data\n");*/
+                        "JRE/lib\n");*/
+                sbInfo.append("并且编辑root=PARENT/PATHS/to/your/data\n");
                 sbInfo.append("现在Xmnlp将尝试从").append(System.getProperties().get("user.dir")).append("读取data……");
-                //logger.severe("没有找到Xmnlp.properties，可能会导致找不到data\n" + sbInfo);
+                logger.severe("没有找到xmnlp.properties，可能会导致找不到data\n" + sbInfo);
 
             }
         }
@@ -373,5 +381,19 @@ public class Xmnlp {
      */
     public static List<String> extractSummary(String document, int size) {
         return TextRankSentence.getTopSentenceList(document, size);
+    }
+
+    /**
+     * 自动摘要
+     * <p>
+     * Parameter size in this method refers to the string length of the summary required;
+     * The actual length of the summary generated may be short than the required length, but never longer;
+     *
+     * @param document   目标文档
+     * @param maxLength 需要摘要的长度
+     * @return 摘要文本
+     */
+    public static String getSummary(String document, int maxLength) {
+        return TextRankSentence.getSummary(document, maxLength);
     }
 }
