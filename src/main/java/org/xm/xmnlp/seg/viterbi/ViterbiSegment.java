@@ -95,10 +95,10 @@ public class ViterbiSegment extends WordBasedModelSegment {
         for (int i = 1; i < nodes.length - 1; ++i) {
             LinkedList<Vertex> nodeArray = nodes[i];
             if (nodeArray == null) continue;
-            for (Vertex node : nodeArray) {
+            for (Vertex node : nodeArray) { // 前缀词典的内部node结果比较选一个
                 if (node.from == null) continue;
                 for (Vertex to : nodes[i + node.realWord.length()]) {
-                    to.updateFrom(node);
+                    to.updateFrom(node);// 根据前后词的联系判断
                 }
             }
         }

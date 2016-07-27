@@ -15,9 +15,9 @@ public class TextRankKeyword extends KeywordExtractor {
      */
     int nKeyword = 10;
     /**
-     * 阻尼系数，一般取值0.85
+     * 阻尼系数(Damping coefficient)，一般取值0.85
      */
-    final static float d = 0.85f;
+    private final static float D = 0.85f;
     /**
      * 最大迭代次数
      */
@@ -27,8 +27,9 @@ public class TextRankKeyword extends KeywordExtractor {
 
     /**
      * 提取关键词
+     *
      * @param sentence 文档内容
-     * @param size 希望提取几个关键词
+     * @param size     希望提取几个关键词
      * @return 结果列表
      */
     public static List<String> getKeywordList(String sentence, int size) {
@@ -119,11 +120,11 @@ public class TextRankKeyword extends KeywordExtractor {
             for (Map.Entry<String, Set<String>> entry : words.entrySet()) {
                 String key = entry.getKey();
                 Set<String> value = entry.getValue();
-                m.put(key, 1 - d);
+                m.put(key, 1 - D);
                 for (String element : value) {
                     int size = words.get(element).size();
                     if (key.equals(element) || size == 0) continue;
-                    m.put(key, m.get(key) + d / size * (score.get(element) == null ? 0 : score.get(element)));
+                    m.put(key, m.get(key) + D / size * (score.get(element) == null ? 0 : score.get(element)));
 
                 }
                 max_diff = Math.max(max_diff, Math.abs(m.get(key) - (score.get(key) == null ? 0 : score.get(key))));

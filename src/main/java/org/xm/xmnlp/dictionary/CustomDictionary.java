@@ -32,13 +32,13 @@ public class CustomDictionary {
     /**
      * 第一个是主词典，其他是副词典
      */
-    public final static String path[] = Xmnlp.Config.CustomDictionaryPath;
+    private final static String PATHS[] = Xmnlp.Config.CustomDictionaryPath;
 
     // 自动加载词典
     static {
         long start = System.currentTimeMillis();
-        if (!loadMainDictionary(path[0])) {
-            logger.warning("自定义词典" + Arrays.toString(path) + "加载失败");
+        if (!loadMainDictionary(PATHS[0])) {
+            logger.warning("自定义词典" + Arrays.toString(PATHS) + "加载失败");
         } else {
             logger.info("自定义词典加载成功:" + dat.size() + "个词条，耗时" + (System.currentTimeMillis() - start) + "ms");
         }
@@ -50,7 +50,7 @@ public class CustomDictionary {
         TreeMap<String, CoreDictionary.Attribute> map = new TreeMap<String, CoreDictionary.Attribute>();
         LinkedHashSet<Nature> customNatureCollector = new LinkedHashSet<Nature>();
         try {
-            for (String p : path) {
+            for (String p : PATHS) {
                 Nature defaultNature = Nature.n;
                 int cut = p.indexOf(' ');
                 if (cut > 0) {

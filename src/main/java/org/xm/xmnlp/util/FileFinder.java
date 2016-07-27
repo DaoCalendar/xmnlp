@@ -12,8 +12,8 @@ public class FileFinder {
 	/**
 	 * 系统路径分隔符
 	 */
-	private static final String SEPARATOR = System.getProperty("path.separator");
-	private static final String[] PATHS_PROPERTIES = new String[]{ "java.class.path",  "java.library.path"};
+	private static final String SEPARATOR = System.getProperty("PATHS.separator");
+	private static final String[] PATHS_PROPERTIES = new String[]{ "java.class.PATHS",  "java.library.PATHS"};
 
 	public static List<File> fileDir = new ArrayList<File>();
 

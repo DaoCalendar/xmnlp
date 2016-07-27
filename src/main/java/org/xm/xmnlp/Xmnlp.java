@@ -7,7 +7,9 @@ import org.xm.xmnlp.dictionary.traditionalsimplified.TraditionalChineseDictionar
 import org.xm.xmnlp.seg.Segment;
 import org.xm.xmnlp.seg.domain.Term;
 import org.xm.xmnlp.seg.viterbi.ViterbiSegment;
+import org.xm.xmnlp.summary.PhraseExtractor;
 import org.xm.xmnlp.summary.TextRankKeyword;
+import org.xm.xmnlp.summary.TextRankSentence;
 import org.xm.xmnlp.tokenizer.StandardTokenizer;
 import org.xm.xmnlp.util.Predefine;
 
@@ -28,7 +30,7 @@ import static org.xm.xmnlp.util.Predefine.logger;
  */
 public class Xmnlp {
     public static final class Config {
-        public static boolean DEBUG = false;
+        public static boolean DEBUG = false; // 默认关闭调试
         public static String CoreDictionaryPath = "data/dictionary/CoreNatureDictionary.txt";
         public static String CoreDictionaryTransformMatrixDictionaryPath = "data/dictionary/CoreNatureDictionary.tr.txt";
         /**
@@ -195,7 +197,7 @@ public class Xmnlp {
             } catch (Exception e) {
                 StringBuffer sbInfo = new StringBuffer("----------tips--------\n " +
                         "make sure the xmnlp.properties is exist.");
-                String classPath = (String) System.getProperties().get("java.class.path");
+                String classPath = (String) System.getProperties().get("java.class.PATHS");
                 if (classPath != null) {
                     for (String path : classPath.split(File.pathSeparator)) {
                         if (new File(path).isDirectory()) {
@@ -208,7 +210,7 @@ public class Xmnlp {
                         "Webapp/WEB-INF/classes\n" +
                         "Appserver/lib\n" +
                         "JRE/lib\n");
-                sbInfo.append("并且编辑root=PARENT/path/to/your/data\n");*/
+                sbInfo.append("并且编辑root=PARENT/PATHS/to/your/data\n");*/
                 sbInfo.append("现在Xmnlp将尝试从").append(System.getProperties().get("user.dir")).append("读取data……");
                 //logger.severe("没有找到Xmnlp.properties，可能会导致找不到data\n" + sbInfo);
 
@@ -227,7 +229,7 @@ public class Xmnlp {
          *
          * @param enable
          */
-        public static void enableDebug(boolean enable) {
+        private static void enableDebug(boolean enable) {
             DEBUG = enable;
             if (DEBUG) {
                 logger.setLevel(Level.ALL);
@@ -342,12 +344,34 @@ public class Xmnlp {
 
     /**
      * 提取关键词
+     *
      * @param sentence 句子
-     * @param size 希望提取几个关键词个数
+     * @param size     希望提取几个关键词个数
      * @return 关键词列表
      */
     public static List<String> extractKeyword(String sentence, int size) {
         return TextRankKeyword.getKeywordList(sentence, size);
     }
 
+    /**
+     * 提取短语
+     *
+     * @param text 文本
+     * @param size 需要多少个短语
+     * @return 一个短语列表，大小 <= size
+     */
+    public static List<String> extractPhrase(String text, int size) {
+        return PhraseExtractor.getPhraseList(text, size);
+    }
+
+    /**
+     * 自动摘要
+     *
+     * @param document 目标文档
+     * @param size     需要的关键句的个数
+     * @return 关键句列表
+     */
+    public static List<String> extractSummary(String document, int size) {
+        return TextRankSentence.getTopSentenceList(document, size);
+    }
 }
