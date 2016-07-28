@@ -66,7 +66,7 @@ public class DoubleArrayTrie<V> implements Serializable, ITrie<V> {
     private int progress;
     private int nextCheckPos;
     // boolean no_delete_;
-    int error_;
+    int error;
 
     // int (*progressfunc_) (size_t, size_t);
     // inline _resize expanded
@@ -99,7 +99,7 @@ public class DoubleArrayTrie<V> implements Serializable, ITrie<V> {
      * @return 兄弟节点个数
      */
     private int fetch(Node parent, List<Node> siblings) {
-        if (error_ < 0)
+        if (error < 0)
             return 0;
 
         int prev = 0;
@@ -115,7 +115,7 @@ public class DoubleArrayTrie<V> implements Serializable, ITrie<V> {
                 cur = (int) tmp.charAt(parent.depth) + 1;
 
             if (prev > cur) {
-                error_ = -3;
+                error = -3;
                 return 0;
             }
 
@@ -146,7 +146,7 @@ public class DoubleArrayTrie<V> implements Serializable, ITrie<V> {
      * @return 插入位置
      */
     private int insert(List<Node> siblings) {
-        if (error_ < 0)
+        if (error < 0)
             return 0;
 
         int begin = 0;
@@ -221,7 +221,7 @@ public class DoubleArrayTrie<V> implements Serializable, ITrie<V> {
 //                System.out.println(this);
 
                 if (value != null && (-value[siblings.get(i).left] - 1) >= 0) {
-                    error_ = -2;
+                    error = -2;
                     return 0;
                 }
 
@@ -244,7 +244,7 @@ public class DoubleArrayTrie<V> implements Serializable, ITrie<V> {
         size = 0;
         allocSize = 0;
         // no_delete_ = false;
-        error_ = 0;
+        error = 0;
     }
 
     // no deconstructor
@@ -371,7 +371,7 @@ public class DoubleArrayTrie<V> implements Serializable, ITrie<V> {
         key = null;
         length = null;
 
-        return error_;
+        return error;
     }
 
     public void open(String fileName) throws IOException {
@@ -804,7 +804,7 @@ public class DoubleArrayTrie<V> implements Serializable, ITrie<V> {
 //                ", value=" + Arrays.toString(value) +
                 ", progress=" + progress +
                 ", nextCheckPos=" + nextCheckPos +
-                ", error_=" + error_ +
+                ", error=" + error +
                 '}';
     }
 
@@ -1150,4 +1150,5 @@ public class DoubleArrayTrie<V> implements Serializable, ITrie<V> {
 //        }
 //        System.out.println("CheckUsed: " + nonZeroIndex);
 //    }
+
 }
