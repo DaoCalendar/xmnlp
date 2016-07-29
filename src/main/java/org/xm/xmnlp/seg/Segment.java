@@ -423,6 +423,17 @@ public abstract class Segment {
     }
 
     /**
+     * 开启繁体中文识别，未实现
+     * @param enable
+     * @return
+     */
+    @Deprecated
+    public Segment enableTraditionalChineseRecognize(boolean enable){
+        config.traditionlChineseRecognize= enable;
+        config.updateNerConfig();
+        return this;
+    }
+    /**
      * 是否启用用户词典
      *
      * @param enable

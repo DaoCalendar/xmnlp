@@ -4,7 +4,7 @@ package org.xm.xmnlp.demo;
 import org.xm.xmnlp.dictionary.CoreSynonymDictionary;
 
 /**
- * 同义词典
+ * 同义词替换，重写相似句意
  */
 public class DemoRewriteText {
     public static void main(String[] args) {

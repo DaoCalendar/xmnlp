@@ -29,6 +29,10 @@ public class Config {
      */
     public boolean organizationRecognize = false;
     /**
+     * 是否识别繁体中文
+     */
+    public boolean traditionlChineseRecognize = false;
+    /**
      * 是否加载用户词典
      */
     public boolean useCustomDictionary = true;
