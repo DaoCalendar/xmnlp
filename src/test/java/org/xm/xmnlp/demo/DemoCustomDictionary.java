@@ -16,7 +16,7 @@ import java.util.Map;
 public class DemoCustomDictionary {
     public static void main(String[] args) {
         // 动态增加
-//        CustomDictionary.add("攻城狮");
+        CustomDictionary.add("攻城狮");
         // 强行插入
         CustomDictionary.insert("白富美", "nz 1024");
         // 删除词语（注释掉试试）

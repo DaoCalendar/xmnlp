@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 生成所有切词可能的有向无环图 =DAG=
+ * jieba：生成所有切词可能的有向无环图 =DAG=
  * Created by xuming on 2016/7/6.
  */
 public class Segmenter {
@@ -141,8 +141,8 @@ public class Segmenter {
      * @param mode
      * @return
      */
-    public List<Item> process(String paragraph, SegMode mode) {
-        List<Item> tokens = new ArrayList<Item>();
+    public List<JItem> process(String paragraph, SegMode mode) {
+        List<JItem> tokens = new ArrayList<JItem>();
         StringBuilder sb = new StringBuilder();
         int offset = 0;
         for (int i = 0; i < paragraph.length(); ++i) {
@@ -160,7 +160,7 @@ public class Segmenter {
                     sb = new StringBuilder();
                     offset = i;
                 }
-                tokens.add(new Item(paragraph.substring(i, i + 1), offset, ++offset, wordDict.getNature(paragraph.substring(i, i + 1))));
+                tokens.add(new JItem(paragraph.substring(i, i + 1), offset, ++offset, wordDict.getNature(paragraph.substring(i, i + 1))));
             }
         }
         if (sb.length() > 0) {
@@ -174,16 +174,16 @@ public class Segmenter {
         return tokens;
     }
 
-    public List<Item> searchMode(String str, int offset) {
-        List<Item> tokens = new ArrayList<Item>();
+    public List<JItem> searchMode(String str, int offset) {
+        List<JItem> tokens = new ArrayList<JItem>();
         for (String word : sentenceProcess(str)) {
-            tokens.add(new Item(word, offset, offset += word.length(), wordDict.getNature(word)));
+            tokens.add(new JItem(word, offset, offset += word.length(), wordDict.getNature(word)));
         }
         return tokens;
     }
 
-    public List<Item> indexMode(String str, int offset) {
-        List<Item> tokens = new ArrayList<Item>();
+    public List<JItem> indexMode(String str, int offset) {
+        List<JItem> tokens = new ArrayList<JItem>();
         for (String token : sentenceProcess(str)) {
             if (token.length() > 2) {
                 String gram2;
@@ -191,7 +191,7 @@ public class Segmenter {
                 for (; j < token.length() - 1; ++j) {
                     gram2 = token.substring(j, j + 2);
                     if (wordDict.containsWord(gram2))
-                        tokens.add(new Item(gram2, offset + j, offset + j + 2, wordDict.getNature(gram2)));
+                        tokens.add(new JItem(gram2, offset + j, offset + j + 2, wordDict.getNature(gram2)));
                 }
             }
             if (token.length() > 3) {
@@ -200,11 +200,11 @@ public class Segmenter {
                 for (; j < token.length() - 2; ++j) {
                     gram3 = token.substring(j, j + 3);
                     if (wordDict.containsWord(gram3))
-                        tokens.add(new Item(gram3, offset + j, offset + j + 3, wordDict.getNature(gram3)));
+                        tokens.add(new JItem(gram3, offset + j, offset + j + 3, wordDict.getNature(gram3)));
 
                 }
             }
-            tokens.add(new Item(token, offset, offset += token.length(), wordDict.getNature(token)));
+            tokens.add(new JItem(token, offset, offset += token.length(), wordDict.getNature(token)));
         }
         return tokens;
     }

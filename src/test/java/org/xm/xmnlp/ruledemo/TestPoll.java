@@ -1,9 +1,10 @@
-package org.xm.xmnlp.demo;
+package org.xm.xmnlp.ruledemo;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 /**
+ * poll示例
  * Created by xuming on 2016/7/8.
  */
 public class TestPoll {

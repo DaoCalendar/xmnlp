@@ -1,7 +1,7 @@
 package org.xm.xmnlp.dictionary.common;
 
 import org.xm.xmnlp.collection.trie.DoubleArrayTrie;
-import org.xm.xmnlp.corpus.dependency.conll.PosTagCompile;
+import org.xm.xmnlp.corpus.dependency.conll.PosTagCompiler;
 import org.xm.xmnlp.corpus.synonym.Synonym;
 import org.xm.xmnlp.corpus.synonym.Synonym.Type;
 import org.xm.xmnlp.corpus.synonym.SynonymHelper;
@@ -159,7 +159,7 @@ public class CommonSynonymDictionary {
             if (synonymItem != null && (synonym = synonymItem.randomSynonym(Type.EQUAL, preWord)) != null) {
                 sbOut.append(synonym.realWord);
             } else sbOut.append(term.word);
-            preWord = PosTagCompile.compile(term.nature.toString(), term.word);
+            preWord = PosTagCompiler.compile(term.nature.toString(), term.word);
         }
         return sbOut.toString();
     }

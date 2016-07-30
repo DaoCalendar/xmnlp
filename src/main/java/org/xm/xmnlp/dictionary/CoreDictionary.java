@@ -11,7 +11,6 @@ import org.xm.xmnlp.util.TextUtil;
 import java.io.*;
 import java.util.Collection;
 import java.util.TreeMap;
-
 import static org.xm.xmnlp.util.Predefine.logger;
 
 /**

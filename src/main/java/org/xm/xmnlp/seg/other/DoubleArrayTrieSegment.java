@@ -6,8 +6,8 @@ import org.xm.xmnlp.corpus.tag.Nature;
 import org.xm.xmnlp.dictionary.CoreDictionary;
 import org.xm.xmnlp.dictionary.CustomDictionary;
 import org.xm.xmnlp.seg.DictionaryBasedSegment;
+import org.xm.xmnlp.seg.NShort.Path.AtomNode;
 import org.xm.xmnlp.seg.domain.Term;
-import org.xm.xmnlp.seg.nshort.path.AtomNode;
 
 import java.util.Arrays;
 import java.util.LinkedList;

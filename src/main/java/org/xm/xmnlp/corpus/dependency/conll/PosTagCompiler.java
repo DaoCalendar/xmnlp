@@ -6,7 +6,7 @@ import org.xm.xmnlp.util.Predefine;
  * 等效词编译器
  * Created by xuming on 2016/7/28.
  */
-public class PosTagCompile {
+public class PosTagCompiler {
     /**
      * 编译，比如将词性为数词的转为##数##
      *

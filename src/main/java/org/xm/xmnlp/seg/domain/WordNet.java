@@ -4,7 +4,7 @@ package org.xm.xmnlp.seg.domain;
 import org.xm.xmnlp.corpus.tag.Nature;
 import org.xm.xmnlp.dictionary.CoreDictionary;
 import org.xm.xmnlp.math.MathTools;
-import org.xm.xmnlp.seg.nshort.path.AtomNode;
+import org.xm.xmnlp.seg.NShort.Path.AtomNode;
 import org.xm.xmnlp.util.Predefine;
 
 import java.util.Iterator;

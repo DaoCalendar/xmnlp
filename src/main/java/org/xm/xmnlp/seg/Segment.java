@@ -9,10 +9,10 @@ import org.xm.xmnlp.dictionary.CoreDictionary;
 import org.xm.xmnlp.dictionary.CustomDictionary;
 import org.xm.xmnlp.dictionary.other.CharTable;
 import org.xm.xmnlp.dictionary.other.CharType;
+import org.xm.xmnlp.seg.NShort.Path.AtomNode;
 import org.xm.xmnlp.seg.domain.Term;
 import org.xm.xmnlp.seg.domain.Vertex;
 import org.xm.xmnlp.seg.domain.WordNet;
-import org.xm.xmnlp.seg.nshort.path.AtomNode;
 import org.xm.xmnlp.util.Predefine;
 import org.xm.xmnlp.util.SentencesUtil;
 import org.xm.xmnlp.util.TextUtil;
@@ -89,7 +89,7 @@ public abstract class Segment {
      * @param end
      * @return
      */
-    protected static List<AtomNode> quickAtomSegment(char[] charArray, int start, int end) {
+    public static List<AtomNode> quickAtomSegment(char[] charArray, int start, int end) {
         List<AtomNode> atomNodeList = new LinkedList<AtomNode>();
         int offsetAtom = start;
         int preType = CharType.get(charArray[offsetAtom]);
@@ -424,15 +424,17 @@ public abstract class Segment {
 
     /**
      * 开启繁体中文识别，未实现
+     *
      * @param enable
      * @return
      */
     @Deprecated
-    public Segment enableTraditionalChineseRecognize(boolean enable){
-        config.traditionlChineseRecognize= enable;
+    public Segment enableTraditionalChineseRecognize(boolean enable) {
+        config.traditionlChineseRecognize = enable;
         config.updateNerConfig();
         return this;
     }
+
     /**
      * 是否启用用户词典
      *

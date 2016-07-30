@@ -13,7 +13,7 @@ import static org.xm.xmnlp.util.Predefine.logger;
  * 可以调整大小的词典
  */
 public abstract class SimpleDictionary<V> {
-    BinTrie<V> trie = new BinTrie<V>();
+    public BinTrie<V> trie = new BinTrie<V>();
 
     public boolean load(String path) {
         try {

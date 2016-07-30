@@ -1,4 +1,4 @@
-package org.xm.xmnlp.demo;
+package org.xm.xmnlp.ruledemo;
 
 import org.xm.xmnlp.segword.Rule;
 
@@ -6,6 +6,7 @@ import java.util.Locale;
 import java.util.Vector;
 
 /**
+ * 规则分词器：向前最大匹配法，向后最大匹配法，双向最大匹配法
  * Created by xuming on 2016/7/25.
  */
 public class RuleSegDemo {

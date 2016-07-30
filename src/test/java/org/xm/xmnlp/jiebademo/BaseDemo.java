@@ -1,11 +1,11 @@
-package org.xm.xmnlp.demo;
+package org.xm.xmnlp.jiebademo;
 
 
 import org.xm.xmnlp.segword.SegMode;
 import org.xm.xmnlp.segword.Segmenter;
 
 /**
- * use jieba segmentation
+ * 结巴分词器使用示例，重写jieba-analysis（java版）源码
  * Created by xuming on 2016/5/26.
  */
 public class BaseDemo {

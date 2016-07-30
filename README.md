@@ -27,7 +27,15 @@
 6. add pinyin to xmnlp 2016.07.24 xuming
 	- 汉字转拼音功能：结果可以显示为数字音调，符号音调，无音调，声调，声母，韵母，输入法头
 	- 汉字拼音可以作为分词属性之一
-
+7.add high speed segment, HMM segment, index segment xuming 20160730
+	- 急速分词器，基于双数组前缀树词典结构，查找词典的最大匹配分词
+	- 二阶隐马模型分词器
+	- 索引分词器
+8.add crf segment , mutithread segment, nshort segment and all test  xuming 20160730
+	- 条件随机场模型分词器
+	- 多线程处理，配合CRF分词效果和速度有保障
+	- NShort分词器
+	- 全覆盖单元测试
 
 
 
