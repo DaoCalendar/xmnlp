@@ -1,9 +1,10 @@
 package org.xm.xmnlp.dic;
 
 /**
+ * 结巴分词的条目
  * Created by xuming on 2016/7/6.
  */
-public class Item {
+public class JItem {
     public String word;
 
     public int startOffset;
@@ -12,13 +13,13 @@ public class Item {
 
     public String nature;//add by xuming 20160607
 
-    public Item(String word, int startOffset, int endOffset) {
+    public JItem(String word, int startOffset, int endOffset) {
         this.word = word;
         this.startOffset = startOffset;
         this.endOffset = endOffset;
     }
 
-    public Item(String word, int startOffset, int endOffset,String nature) {
+    public JItem(String word, int startOffset, int endOffset, String nature) {
         this.word = word;
         this.startOffset = startOffset;
         this.endOffset = endOffset;
