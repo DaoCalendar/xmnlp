@@ -8,6 +8,7 @@ public class PathNode {
      * 节点前驱
      */
     public int from;
+
     /**
      * 节点在顶点数组中的下标
      */

@@ -1,6 +1,5 @@
 package org.xm.xmnlp.seg.NShort.Path;
 
-
 import org.xm.xmnlp.seg.domain.EdgeFrom;
 import org.xm.xmnlp.seg.domain.Graph;
 import org.xm.xmnlp.util.Predefine;
@@ -148,7 +147,7 @@ public class NShortPath {
     /**
      * 获取前index+1短的路径
      *
-     * @param index index ＝ 0 : 最短的路径； index = 1 ： 次短的路径, 依此类推。index <= this.N
+     * @param index index ＝ 0 : 最短的路径； index = 1 ： 次短的路径, 依此类推 index <= this.N
      * @return
      */
     public List<int[]> getPaths(int index) {
@@ -204,7 +203,7 @@ public class NShortPath {
     /**
      * 获取唯一一条最短路径，当然最短路径可能不只一条
      *
-     * @return
+     * @return Integer[]
      */
     public Integer[] getBestPath() {
         assert (vertexCount > 2);

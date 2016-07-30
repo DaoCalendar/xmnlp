@@ -8,10 +8,15 @@ import org.xm.xmnlp.util.Predefine;
 
 /**
  * 原子分词节点
- *
  */
 public class AtomNode {
+    /**
+     * 词语
+     */
     public String sWord;
+    /**
+     * 位置
+     */
     public int nPOS;
 
     public AtomNode(String sWord, int nPOS) {
