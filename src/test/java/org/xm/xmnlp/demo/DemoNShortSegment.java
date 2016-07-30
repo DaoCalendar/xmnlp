@@ -3,7 +3,7 @@ package org.xm.xmnlp.demo;
 
 import org.xm.xmnlp.seg.NShort.NShortSegment;
 import org.xm.xmnlp.seg.Segment;
-import org.xm.xmnlp.seg.viterbi.ViterbiSegment;
+import org.xm.xmnlp.seg.ViterbiSegment;
 
 /**
  * N最短路径分词，该分词器比最短路分词器慢，但是效果稍微好一些，对命名实体识别能力更强

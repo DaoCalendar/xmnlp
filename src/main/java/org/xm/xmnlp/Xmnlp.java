@@ -6,7 +6,7 @@ import org.xm.xmnlp.dictionary.traditionalsimplified.SimplifiedChineseDictionary
 import org.xm.xmnlp.dictionary.traditionalsimplified.TraditionalChineseDictionary;
 import org.xm.xmnlp.seg.Segment;
 import org.xm.xmnlp.seg.domain.Term;
-import org.xm.xmnlp.seg.viterbi.ViterbiSegment;
+import org.xm.xmnlp.seg.ViterbiSegment;
 import org.xm.xmnlp.summary.PhraseExtractor;
 import org.xm.xmnlp.summary.TextRankKeyword;
 import org.xm.xmnlp.summary.TextRankSentence;

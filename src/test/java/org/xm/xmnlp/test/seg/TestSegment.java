@@ -14,7 +14,7 @@ import org.xm.xmnlp.seg.DijkstraSegment;
 import org.xm.xmnlp.seg.Segment;
 import org.xm.xmnlp.seg.domain.Term;
 import org.xm.xmnlp.seg.other.DoubleArrayTrieSegment;
-import org.xm.xmnlp.seg.viterbi.ViterbiSegment;
+import org.xm.xmnlp.seg.ViterbiSegment;
 import org.xm.xmnlp.tokenizer.*;
 
 import java.util.Iterator;

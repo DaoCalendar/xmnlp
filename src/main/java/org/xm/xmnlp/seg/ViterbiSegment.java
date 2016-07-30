@@ -1,4 +1,4 @@
-package org.xm.xmnlp.seg.viterbi;
+package org.xm.xmnlp.seg;
 
 
 import org.xm.xmnlp.Xmnlp;
