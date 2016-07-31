@@ -1,9 +1,9 @@
 # xmnlp自然语言处理包
 
 
-#### author：xuming(shibing624) 
+#### author：xuming(shibing624)
 #### environment：jdk 1.6
-    
+
 
 1. add the rule chinese word segmentation: 2016.06.21
     - 正向最大匹配法
@@ -103,19 +103,11 @@
 
 ------
 
-#### 支持中文分词模式
-   - Search模式，用于对用户查询词分词
-   - Index模式，用于对索引文档分词
 
-#### 特性
-   - 支持多种分词模式
-   - 全角统一转成半角
-   - 用户词典功能
-   - resource 目录有整理的搜狗细胞词库和一个自定义词库，可加载多个用户词库
 
-#### 如何获取
-  - 方式一、当前稳定版本
-  
+## 如何获取
+  - 方式一：当前稳定版本
+
     ```
   	<dependency>
             <groupId>com.xm</groupId>
@@ -123,35 +115,39 @@
             <version>1.0.1</version>
     </dependency>
   	```
-    
+
     零配置，即可使用基本功能（除CRF分词、依存句法分析外的全部功能）。如果用户有自定义的需求，可以参考方式二，使用xmnlp.properties进行配置。
-  
-  - 方式二、下载jar、data、xmnlp.properties
-  
+
+  - 方式二：下载jar、data、xmnlp.properties
+
   	数据与程序分离，给予用户自定义的自由。
-  
+
   	1、下载jar
-  
+
   	  xmnlp.jar
-  
+
   	2、下载data
-  
+
 	  [data.zip](http://pan.baidu.com/s/1jIydVsq)
 	  下载后解压到任意目录，接下来通过配置文件告诉xmnlp数据包的位置。
 
 	  xmnlp中的数据分为词典和模型，其中词典是词法分析必需的，模型是句法分析必需的。
 
-	  data
-	  │
-	  ├─dictionary
-	  └─model
+
+	>
+	> 	  data
+	> 	  │
+	> 	  ├─dictionary
+	> 	  └─model
+
 	  用户可以自行增删替换，如果不需要句法分析功能的话，随时可以删除model文件夹。
 
 	  模型跟词典没有绝对的区别，隐马模型被做成人人都可以编辑的词典形式，不代表它不是模型。
 	  GitHub代码库中已经包含了data.zip中的词典，直接编译运行自动缓存即可；模型则需要额外下载。
-  3、配置文件
-  
-	  示例配置文件:xmnlp.properties 在src的resources中。
+
+  	3、配置文件
+
+	  示例配置文件:`xmnlp.properties` 在src的resources中。
 
 	  配置文件的作用是告诉xmnlp数据包的位置，只需修改第一行
 
@@ -159,12 +155,14 @@
 	  为data的父目录即可，比如data目录是/Users/root/Documents/data，那么root=/Users/root/Documents/ 。
 
 	  如果选用mini词典的话，则需要修改配置文件：
+
 	  CoreDictionaryPath=data/dictionary/CoreNatureDictionary.mini.txt
 	  BiGramDictionaryPath=data/dictionary/CoreNatureDictionary.ngram.mini.txt
+
 	  最后将xmnlp.properties放入classpath即可，对于任何项目，都可以放到src或resources目录下，编译时IDE会自动将其复制到classpath中。
 
 	  如果放置不当，xmnlp会智能提示当前环境下的合适路径，并且尝试从项目根目录读取数据集。
-  
+
 ## 调用方法
 
 **xmnlp**几乎所有的功能都可以通过工具类`Xmnlp`快捷调用，当你想不起来调用方法时，只需键入`Xmnlp.`，IDE应当会给出提示，并展示**xmnlp**完善的文档。
@@ -176,12 +174,21 @@
 #### 如何使用
 
   - Demo
-	
-	
+
+
 	```
 	System.out.println(Xmnlp.segment("你好，欢迎使用xmnlp自然语言处理包！"));
 	```
 
+## 支持结巴中文分词模式
+   - Search模式，用于对用户查询词分词
+   - Index模式，用于对索引文档分词
+
+#### 特性
+   - 支持多种分词模式
+   - 全角统一转成半角
+   - 用户词典功能
+   - resource 目录有整理的搜狗细胞词库和一个自定义词库，可加载多个用户词库
 
 #### 算法
   - [ ] 基于 =trie= 树结构实现高效词图扫描
@@ -194,11 +201,11 @@
 	```
 	Processor 2 Intel(R) Pentium(R) CPU G620 @ 2.60GHz
 	Memory：8GB
-	
+
 	分词测试时机器开了许多应用(eclipse、emacs、chrome...)，可能
 	会影响到测试速度
 	```
-  
+
   - 测试结果(单线程，对测试文本逐行分词，并循环调用上万次)
 	```
 	  循环调用一万次
@@ -208,7 +215,7 @@
 	  time elapsed:12284, rate:2505.005241kb/s, words:923966.10/s
 	  第三次测试结果：
 	  time elapsed:12336, rate:2494.445880kb/s, words:920071.30/s
-	
+
 	  循环调用2万次
 	  第一次测试结果：
 	  time elapsed:22237, rate:2767.593144kb/s, words:1020821.12/s
@@ -217,26 +224,26 @@
 	  第三次测试结果：
 	  time elapsed:22102, rate:2784.497726kb/s, words:1027056.34/s
 	  统计结果:词典加载时间1.8s左右，分词效率每秒2Mb多，近100万词。
-	
+
 	  2 Processor Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz
 	  12G 测试效果
 	  time elapsed:19597, rate:3140.428063kb/s, words:1158340.52/s
 	  time elapsed:20122, rate:3058.491639kb/s, words:1128118.44/s
 	```
 
-    
 
-#### 许可证
+
+## 许可证
   许可证为ApacheLicence 2.0
-  
-  
+
+
         Copyright (C) 2016 xm Inc
-        
+
         Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-        
+
         http://www.apache.org/licenses/LICENSE-2.0
-        
+
         Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-     
-    
+
+
 
