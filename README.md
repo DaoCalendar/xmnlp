@@ -14,7 +14,7 @@
   	- 生成所有切词可能的有向无环图 DAG
   	- 采用动态规划算法计算最佳切词组合
   	- 基于 =HMM= 模型，采用 =Viterbi= (维特比)算法实现未登录词识别
-3. add hanlp to xmnlp 2016.07.23
+3. add xmnlp to xmnlp 2016.07.23
 	- 基于双数组 trie 树结构实现高效词图扫描存储词典
 	- 最短路径分词，最短路求解采用Viterbi算法
 	- 添加人名识别功能：中文人名，日本人名，音译人名识别功能
@@ -24,19 +24,28 @@
 	- 机构名识别功能
 	- 地名识别
 	- trie词典树，基于贝尔实验室的 Aho-Corasick 白皮书完成，将来可以改为双数组trie数提高效率
-6. add pinyin to xmnlp 2016.07.24 xuming
+6. add pinyin, keyword, stopword, POS tagging, synonym dictionary and traditionary chinese to xmnlp 2016.07.24 xuming
 	- 汉字转拼音功能：结果可以显示为数字音调，符号音调，无音调，声调，声母，韵母，输入法头
-	- 汉字拼音可以作为分词属性之一
-7.add high speed segment, HMM segment, index segment xuming 20160730
+	- 提取关键字
+	- 添加搜索停用词
+	- 词性标注
+	- 同义词典
+	- 简繁字体转换
+7. add high speed segment, HMM segment, index segment xuming 20160730
 	- 急速分词器，基于双数组前缀树词典结构，查找词典的最大匹配分词
 	- 二阶隐马模型分词器
 	- 索引分词器
-8.add crf segment , mutithread segment, nshort segment and all test  xuming 20160730
+8. add crf segment , mutithread segment, nshort segment and all test  xuming 20160730
 	- 条件随机场模型分词器
 	- 多线程处理，配合CRF分词效果和速度有保障
 	- NShort分词器
 	- 全覆盖单元测试
-
+9. add dependency parse, include 2-gram dependency model, CRF model dependency, Max Ent model dependency and all test  xuming 20160731
+	- 依存句法分析工具
+	- 2-gram依存模型，根据两个词的词和词性猜测它们最可能的依存关系
+	- 条件随机场（CRF）句法模型
+	- 最大熵（MaxEnt）句法分析器
+	- 神经网络句法模型，尚未完成
 
 
 ---
@@ -46,12 +55,12 @@
 
 **xmnlp**提供下列功能：
 
-> * 中文分词
+> * 中文分词.
   * 最短路分词.
   * N-最短路分词
-  * CRF分词
+  * CRF分词.
   * 索引分词.
-  * 极速词典分词
+  * 极速词典分词.
   * 用户自定义词典.
 > * 词性标注.
 > * 命名实体识别.
@@ -63,9 +72,9 @@
 > * 关键词提取.
   * TextRank关键词提取.
 > * 自动摘要.
-  * TextRank自动摘要
+  * TextRank自动摘要.
 > * 短语提取.
-  * 基于互信息和左右信息熵的短语提取
+  * 基于互信息和左右信息熵的短语提取.
 > * 拼音转换.
   * 多音字.
   * 声母.
@@ -73,21 +82,21 @@
   * 声调.
 > * 简繁转换.
   * 繁体中文分词.
-  * 简繁分歧词
-> * 文本推荐
-  * 语义推荐
-  * 拼音推荐
-  * 字词推荐
-> * 依存句法分析
-  * 基于神经网络的高性能依存句法分析器
-  * MaxEnt依存句法分析
-  * CRF依存句法分析
-> * 语料库工具
-  * 分词语料预处理
-  * 词频词性词典制作
-  * BiGram统计
+  * 简繁分歧词.
+> * 文本推荐.
+  * 语义推荐.
+  * 拼音推荐.
+  * 字词推荐.
+> * 依存句法分析.
+  * 基于神经网络的高性能依存句法分析器.
+  * MaxEnt依存句法分析.
+  * CRF依存句法分析.
+> * 语料库工具.
+  * 分词语料预处理.
+  * 词频词性词典制作.
+  * BiGram统计.
   * 词共现统计.
-  * CoNLL语料预处理
+  * CoNLL语料预处理.
 
 
 在提供丰富功能的同时，**xmnlp**内部模块坚持低耦合、模型坚持惰性加载、服务坚持静态提供、词典坚持明文发布，使用非常方便，同时自带一些语料处理工具，帮助用户训练自己的语料。
@@ -105,7 +114,7 @@
    - resource 目录有整理的搜狗细胞词库和一个自定义词库，可加载多个用户词库
 
 #### 如何获取
-  - 当前稳定版本
+  - 方式一、当前稳定版本
   
     ```
   	<dependency>
@@ -115,6 +124,47 @@
     </dependency>
   	```
     
+    零配置，即可使用基本功能（除CRF分词、依存句法分析外的全部功能）。如果用户有自定义的需求，可以参考方式二，使用xmnlp.properties进行配置。
+  
+  - 方式二、下载jar、data、xmnlp.properties
+  
+  	数据与程序分离，给予用户自定义的自由。
+  
+  	1、下载jar
+  
+  	  xmnlp.jar
+  
+  	2、下载data
+  
+	  [data.zip](http://pan.baidu.com/s/1jIydVsq)
+	  下载后解压到任意目录，接下来通过配置文件告诉xmnlp数据包的位置。
+
+	  xmnlp中的数据分为词典和模型，其中词典是词法分析必需的，模型是句法分析必需的。
+
+	  data
+	  │
+	  ├─dictionary
+	  └─model
+	  用户可以自行增删替换，如果不需要句法分析功能的话，随时可以删除model文件夹。
+
+	  模型跟词典没有绝对的区别，隐马模型被做成人人都可以编辑的词典形式，不代表它不是模型。
+	  GitHub代码库中已经包含了data.zip中的词典，直接编译运行自动缓存即可；模型则需要额外下载。
+  3、配置文件
+  
+	  示例配置文件:xmnlp.properties 在src的resources中。
+
+	  配置文件的作用是告诉xmnlp数据包的位置，只需修改第一行
+
+	  root=usr/home/xmnlp/
+	  为data的父目录即可，比如data目录是/Users/root/Documents/data，那么root=/Users/root/Documents/ 。
+
+	  如果选用mini词典的话，则需要修改配置文件：
+	  CoreDictionaryPath=data/dictionary/CoreNatureDictionary.mini.txt
+	  BiGramDictionaryPath=data/dictionary/CoreNatureDictionary.ngram.mini.txt
+	  最后将xmnlp.properties放入classpath即可，对于任何项目，都可以放到src或resources目录下，编译时IDE会自动将其复制到classpath中。
+
+	  如果放置不当，xmnlp会智能提示当前环境下的合适路径，并且尝试从项目根目录读取数据集。
+  
 ## 调用方法
 
 **xmnlp**几乎所有的功能都可以通过工具类`Xmnlp`快捷调用，当你想不起来调用方法时，只需键入`Xmnlp.`，IDE应当会给出提示，并展示**xmnlp**完善的文档。

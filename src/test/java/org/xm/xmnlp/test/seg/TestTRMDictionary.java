@@ -6,7 +6,7 @@ import org.xm.xmnlp.corpus.tag.NR;
 import org.xm.xmnlp.dictionary.TransformMatrixDictionary;
 
 /**
- * @author hankcs
+ * 转换矩阵词典
  */
 public class TestTRMDictionary extends TestCase {
     public void testLoad() throws Exception {
@@ -17,5 +17,6 @@ public class TestTRMDictionary extends TestCase {
         System.out.println(nrTransformMatrixDictionary.getTotalFrequency());
         System.out.println(nrTransformMatrixDictionary.getTotalFrequency(NR.Z));
         System.out.println(nrTransformMatrixDictionary.getTotalFrequency(NR.A));
+        // bug：统计总词频是直接赋值的，需要改为动态变更
     }
 }

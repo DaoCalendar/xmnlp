@@ -7,6 +7,9 @@ import org.xm.xmnlp.corpus.dependency.conll.CoNLLSentence;
 import org.xm.xmnlp.corpus.dependency.conll.CoNLLWord;
 import org.xm.xmnlp.corpus.dependency.conll.Evaluator;
 import org.xm.xmnlp.corpus.tag.Nature;
+import org.xm.xmnlp.dependency.CRFDependencyParser;
+import org.xm.xmnlp.dependency.MaxEntDependencyParser;
+import org.xm.xmnlp.dependency.WordNatureDependencyParser;
 import org.xm.xmnlp.seg.domain.Term;
 
 import java.util.LinkedList;
@@ -23,39 +26,44 @@ public class TestParse extends TestCase {
         termList.add(new Term("经济", Nature.n));
         termList.add(new Term("犯罪", Nature.vn));
 
-        //System.out.println(CRFDependencyParser.compute(termList));
+        System.out.println(CRFDependencyParser.compute(termList));
     }
 
     public void testSegAndParse() throws Exception {
-        //System.out.println(MaxEntDependencyParser.compute("我喜欢陈膺奥"));
+        System.out.println(MaxEntDependencyParser.compute("我喜欢陈膺奥"));
     }
 
     public void testMaxEntParser() throws Exception {
         Xmnlp.Config.enableDebug();
-        //System.out.println(MaxEntDependencyParser.compute("我每天骑车上学"));
+        System.out.println(MaxEntDependencyParser.compute("我每天骑车上学"));
     }
 
     public void testCRFParser() throws Exception {
         Xmnlp.Config.enableDebug();
-        //System.out.println(CRFDependencyParser.compute("我每天骑车上学"));
+        System.out.println(CRFDependencyParser.compute("我每天骑车上学"));
     }
 
     public void testWordNatureParser() throws Exception {
         Xmnlp.Config.enableDebug();
-        //System.out.println(WordNatureDependencyParser.compute("我每天骑车上学"));
+        System.out.println(WordNatureDependencyParser.compute("我每天骑车上学"));
     }
 
+    /**
+     * 神经网络分类模型arc-standard转移动作的判决式依存句法分析器
+     *
+     * @throws Exception
+     */
     public void testNNParser() throws Exception {
-        //System.out.println(NeuralNetworkDependencyParser.compute("徐先生还具体帮助他确定了把画雄鹰、松鼠和麻雀作为主攻目标。"));
+//        System.out.println(NeuralNetworkDependencyParser.compute("徐先生还具体帮助他确定了把画雄鹰、松鼠和麻雀作为主攻目标。"));
     }
 
-    public void testNatureMap() throws Exception {
-        //System.out.println('Ｏ' == 'Ｏ');
-        String text = "二Ｏ一二年四月五日";
+//    public void testNatureMap() throws Exception {
+//        System.out.println('Ｏ' == 'Ｏ');
+//        String text = "二Ｏ一二年四月五日";
 //        List<Term> termList = NeuralNetworkDependencyParser.INSTANCE.getSegment().seg(text);
-        //System.out.println(termList);
-        //System.out.println(NeuralNetworkDependencyParser.compute(termList));
-    }
+//        System.out.println(termList);
+//        System.out.println(NeuralNetworkDependencyParser.compute(termList));
+//    }
 
     public void testCrfParser() throws Exception {
         Xmnlp.Config.enableDebug();
@@ -67,7 +75,7 @@ public class TestParse extends TestCase {
         termList.add(new Term("等", Nature.udeng));
         termList.add(new Term("经济", Nature.n));
         termList.add(new Term("犯罪", Nature.vn));
-        //System.out.println(CRFDependencyParser.compute(termList));
+        System.out.println(CRFDependencyParser.compute(termList));
     }
 
     public void testEvaluate() throws Exception {
@@ -82,10 +90,10 @@ public class TestParse extends TestCase {
             for (CoNLLWord word : sentence.word) {
                 termList.add(new Term(word.LEMMA, Nature.valueOf(word.POSTAG)));
             }
-//            CoNLLSentence out = CRFDependencyParser.compute(termList);
-//            evaluator.e(sentence, out);
-            //System.out.println("done in " + (//System.currentTimeMillis() - start) + " ms.");
+            CoNLLSentence out = CRFDependencyParser.compute(termList);
+            evaluator.e(sentence, out);
+            System.out.println("done in " + (System.currentTimeMillis() - start) + " ms.");
         }
-        //System.out.println(evaluator);
+        System.out.println(evaluator);
     }
 }

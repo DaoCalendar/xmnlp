@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 import org.xm.xmnlp.util.TextUtil;
 
 /**
- * @author hankcs
+ * TextUtil
  */
 public class TestUtil extends TestCase {
     public void testNonZero() throws Exception {

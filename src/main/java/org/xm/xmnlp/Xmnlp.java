@@ -1,12 +1,14 @@
 package org.xm.xmnlp;
 
+import org.xm.xmnlp.corpus.dependency.conll.CoNLLSentence;
+import org.xm.xmnlp.dependency.CRFDependencyParser;
 import org.xm.xmnlp.dictionary.pinyin.Pinyin;
 import org.xm.xmnlp.dictionary.pinyin.PinyinDictionary;
 import org.xm.xmnlp.dictionary.traditionalsimplified.SimplifiedChineseDictionary;
 import org.xm.xmnlp.dictionary.traditionalsimplified.TraditionalChineseDictionary;
 import org.xm.xmnlp.seg.Segment;
-import org.xm.xmnlp.seg.domain.Term;
 import org.xm.xmnlp.seg.ViterbiSegment;
+import org.xm.xmnlp.seg.domain.Term;
 import org.xm.xmnlp.summary.PhraseExtractor;
 import org.xm.xmnlp.summary.TextRankKeyword;
 import org.xm.xmnlp.summary.TextRankSentence;
@@ -385,15 +387,25 @@ public class Xmnlp {
 
     /**
      * 自动摘要
-     * <p>
+     * <p/>
      * Parameter size in this method refers to the string length of the summary required;
      * The actual length of the summary generated may be short than the required length, but never longer;
      *
-     * @param document   目标文档
+     * @param document  目标文档
      * @param maxLength 需要摘要的长度
      * @return 摘要文本
      */
     public static String getSummary(String document, int maxLength) {
         return TextRankSentence.getSummary(document, maxLength);
+    }
+
+    /**
+     * 依存文法分析
+     *
+     * @param sentence 待分析的句子
+     * @return CoNLL格式的依存关系树
+     */
+    public static CoNLLSentence parseDependency(String sentence) {
+        return CRFDependencyParser.compute(sentence);
     }
 }
