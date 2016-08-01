@@ -282,7 +282,7 @@ public class CRFSegment extends Segment {
     }
 
     /**
-     * 字符正规化表，相较于com/hankcs/hanlp/dictionary/other/CharTable.java,做了一些调整
+     * 字符正规化表，做了一些调整
      *
      * @author hankcs
      */
@@ -303,7 +303,7 @@ public class CRFSegment extends Segment {
                 e.printStackTrace();
                 System.exit(-1);
             }
-            // see https://github.com/hankcs/Xmnlp/issues/13
+
             CONVERT['“'] = '“';
             CONVERT['”'] = '”';
             CONVERT['.'] = '.';
