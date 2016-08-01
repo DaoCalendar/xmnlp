@@ -6,7 +6,7 @@ import org.xm.xmnlp.Xmnlp;
 import org.xm.xmnlp.corpus.io.FolderWalker;
 import org.xm.xmnlp.corpus.tag.Nature;
 import org.xm.xmnlp.seg.DijkstraSegment;
-import org.xm.xmnlp.seg.NShort.NShortSegment;
+import org.xm.xmnlp.seg.NShortSegment;
 import org.xm.xmnlp.seg.Segment;
 import org.xm.xmnlp.seg.domain.Term;
 import org.xm.xmnlp.util.IOUtil;

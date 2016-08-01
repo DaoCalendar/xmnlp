@@ -1,6 +1,6 @@
 package org.xm.xmnlp.test.seg;
 
-import org.xm.xmnlp.seg.NShort.NShortSegment;
+import org.xm.xmnlp.seg.NShortSegment;
 import org.xm.xmnlp.seg.domain.Term;
 
 import java.util.LinkedList;

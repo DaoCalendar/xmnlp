@@ -1,7 +1,7 @@
 package org.xm.xmnlp.test.seg;
 
 import junit.framework.TestCase;
-import org.xm.xmnlp.seg.NShort.NShortSegment;
+import org.xm.xmnlp.seg.NShortSegment;
 
 public class TestAddressRecognition extends TestCase {
     public static void main(String[] args) {

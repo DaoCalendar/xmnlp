@@ -1,7 +1,7 @@
 package org.xm.xmnlp.demo;
 
 
-import org.xm.xmnlp.seg.NShort.NShortSegment;
+import org.xm.xmnlp.seg.NShortSegment;
 import org.xm.xmnlp.seg.Segment;
 import org.xm.xmnlp.seg.ViterbiSegment;
 

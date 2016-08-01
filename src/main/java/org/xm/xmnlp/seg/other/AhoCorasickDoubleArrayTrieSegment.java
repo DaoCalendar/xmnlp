@@ -5,9 +5,9 @@ import org.xm.xmnlp.collection.ahocorasick.AhoCorasickDoubleArrayTrie;
 import org.xm.xmnlp.corpus.tag.Nature;
 import org.xm.xmnlp.dictionary.CoreDictionary;
 import org.xm.xmnlp.seg.DictionaryBasedSegment;
-import org.xm.xmnlp.seg.NShort.Path.AtomNode;
 import org.xm.xmnlp.seg.Segment;
 import org.xm.xmnlp.seg.domain.Term;
+import org.xm.xmnlp.seg.nshortpath.AtomNode;
 import org.xm.xmnlp.util.IOUtil;
 import org.xm.xmnlp.util.TextUtil;
 

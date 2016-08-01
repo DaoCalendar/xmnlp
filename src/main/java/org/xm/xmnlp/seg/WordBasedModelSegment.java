@@ -6,11 +6,11 @@ import org.xm.xmnlp.dictionary.CoreDictionary;
 import org.xm.xmnlp.dictionary.CoreDictionaryTransformMatrixDictionary;
 import org.xm.xmnlp.dictionary.other.CharType;
 import org.xm.xmnlp.math.Viterbi;
-import org.xm.xmnlp.seg.NShort.Path.AtomNode;
 import org.xm.xmnlp.seg.domain.Graph;
 import org.xm.xmnlp.seg.domain.Term;
 import org.xm.xmnlp.seg.domain.Vertex;
 import org.xm.xmnlp.seg.domain.WordNet;
+import org.xm.xmnlp.seg.nshortpath.AtomNode;
 import org.xm.xmnlp.util.Predefine;
 import org.xm.xmnlp.util.TextUtil;
 

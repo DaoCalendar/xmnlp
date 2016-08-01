@@ -1,7 +1,7 @@
 package org.xm.xmnlp.test.seg;
 
 
-        import org.xm.xmnlp.seg.NShort.NShortSegment;
+import org.xm.xmnlp.seg.NShortSegment;
 
 /**
  * 测试N-最短路径分词

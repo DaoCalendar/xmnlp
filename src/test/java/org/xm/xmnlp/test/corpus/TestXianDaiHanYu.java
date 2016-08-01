@@ -13,7 +13,7 @@ import org.xm.xmnlp.dictionary.pinyin.Pinyin;
 import org.xm.xmnlp.dictionary.pinyin.PinyinDictionary;
 import org.xm.xmnlp.dictionary.pinyin.TonePinyinString2PinyinConverter;
 import org.xm.xmnlp.dictionary.traditionalsimplified.TraditionalChineseDictionary;
-import org.xm.xmnlp.seg.NShort.NShortSegment;
+import org.xm.xmnlp.seg.NShortSegment;
 import org.xm.xmnlp.seg.Segment;
 import org.xm.xmnlp.util.IOUtil;
 import org.xm.xmnlp.util.TextUtil;
