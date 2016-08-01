@@ -156,9 +156,9 @@ public class CharacterBasedGenerativeModel implements ICacheAble {
         double[][] pre = new double[4][4];
         for (int i = 2; i < charArray.length; i++) {
             // swap(now, pre)
-            double[][] _ = pre;
+            double[][] d = pre;
             pre = now;
-            now = _;
+            now = d;
             // end of swap
             for (int s = 0; s < 4; ++s) {
                 for (int t = 0; t < 4; ++t) {
