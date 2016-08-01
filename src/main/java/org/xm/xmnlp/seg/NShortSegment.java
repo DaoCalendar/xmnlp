@@ -8,11 +8,11 @@ import org.xm.xmnlp.recognition.person.JapanesePersonRecognition;
 import org.xm.xmnlp.recognition.person.PersonRecognition;
 import org.xm.xmnlp.recognition.person.TranslatedPersonRecognition;
 import org.xm.xmnlp.recognition.place.PlaceRecognition;
-import org.xm.xmnlp.seg.NShort.Path.NShortPath;
 import org.xm.xmnlp.seg.domain.Graph;
 import org.xm.xmnlp.seg.domain.Term;
 import org.xm.xmnlp.seg.domain.Vertex;
 import org.xm.xmnlp.seg.domain.WordNet;
+import org.xm.xmnlp.seg.nshortpath.NShortPath;
 
 import java.util.LinkedList;
 import java.util.List;
