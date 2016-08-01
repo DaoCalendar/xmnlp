@@ -1,6 +1,5 @@
 package org.xm.xmnlp.seg;
 
-
 import org.xm.xmnlp.Xmnlp;
 import org.xm.xmnlp.math.Dijkstra;
 import org.xm.xmnlp.recognition.organ.OrganizationRecognition;

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * NShort路径
+ * N最短分词路径
  */
 public class NShortPath {
     /**
