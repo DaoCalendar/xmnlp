@@ -68,7 +68,7 @@ public class Servlet {
                 List<String> keywordList = Xmnlp.extractKeyword(input, 5);
                 return keywordList.toString();
             case SUMMARY:
-                List<String> sentenceList = Xmnlp.extractSummary(input, 3);
+                List<String> sentenceList = Xmnlp.extractSummary(input, 5);
                 return sentenceList.toString();
                 //return "<html>"+new TagContent("<font color=\"red\">", "</font>").tagContent(summary)+"...</html>" ;
             default:

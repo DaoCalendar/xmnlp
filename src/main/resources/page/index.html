@@ -2,15 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="xm">
 
-    <title>NLP-中文分词-演示程序</title>
+    <title>NLP-中文分词-xmnlp演示程序</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+          href="http://static.bosonnlp.com/vendor/jquery-ui/themes/smoothness/jquery-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="http://static.bosonnlp.com/stylesheets/global.css?01e4aed"/>
+
+    <link rel="stylesheet" type="text/css"
+          href="http://static.bosonnlp.com/vendor/css-toggle-switch/dist/toggle-switch.min.css"/>
+    <link rel="stylesheet" type="text/css" href="http://static.bosonnlp.com/stylesheets/demo.css?01e4aed"/>
 
     <style>
         body {
@@ -45,25 +51,25 @@
                         $("#form1").attr("target", "CRF");
                         $("#form1").submit();
 
-                        $("#form1").attr("action", "../?method=hmm");
+                        /*$("#form1").attr("action", "../?method=hmm");
                         $("#form1").attr("target", "HMM");
-                        $("#form1").submit();
+                        $("#form1").submit();*/
 
-                        $("#form1").attr("action", "../?method=nshort");
+                        /*$("#form1").attr("action", "../?method=nshort");
                         $("#form1").attr("target", "NSHORT");
-                        $("#form1").submit();
+                        $("#form1").submit();*/
 
                         $("#form1").attr("action", "../?method=pinyin");
                         $("#form1").attr("target", "PINYIN");
                         $("#form1").submit();
 
-                        $("#form1").attr("action", "../?method=traditionalchinese");
+                        /*$("#form1").attr("action", "../?method=traditionalchinese");
                         $("#form1").attr("target", "TRADITIONALCHINESE");
-                        $("#form1").submit();
+                        $("#form1").submit();*/
 
-                        $("#form1").attr("action", "../?method=simplechinese");
+                        /*$("#form1").attr("action", "../?method=simplechinese");
                         $("#form1").attr("target", "SIMPLECHINESE");
-                        $("#form1").submit();
+                        $("#form1").submit();*/
 
                         $("#form1").attr("action", "../?method=keyword");
                         $("#form1").attr("target", "KEYWORD");
@@ -73,14 +79,15 @@
                         $("#form1").attr("target", "SUMMARY");
                         $("#form1").submit();
 
-
+                        /*$("#form1").attr("action", "../?method=recommend");
+                        $("#form1").attr("target", "RECOMMEND");
+                        $("#form1").submit();*/
                     });
 
                 });
     </script>
 
 </head>
-
 <body>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -92,52 +99,173 @@
                     class="icon-bar"></span> <span class="icon-bar"></span> <span
                     class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">NLP-中文分词-演示程序</a>
+            <a class="navbar-brand" href="#">xmnlp</a>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <form name="form1" id="form1" method="post">
-        <div class="starter-template">
-            <textarea style="width: 100%;" rows="10" name="input">演示：爱国是信任人民，不是信任某个政体或制度，重载不是重任。匡扶正义？你這是繁體字，沒簡體。</textarea>
+<div id="demo-page">
+    <div id="demo-container" class="container">
+        <form name="form1" id="form1" method="post">
+            <div class="breadcrumb breadcrumb-bottom">
+                <span>您现在的位置:</span>
+                <a href="#">首页</a>
+                <span class="html-char">&gt;</span>
+                <span>演示</span>
+                <span class="html-char">&gt;</span>
+                <span>xmnlp演示</span>
+            </div>
+            <div class="input-chunk chunk">
+                <textarea id="txt-analysis" class="input" name="input">演示：爱国是信任人民，不是信任某个政体或制度，重载不是重任。匡扶正义？你這是繁體字，沒簡體。15日，备受关注的电影《黄金时代》在北京举行了电影发布会，导演许鞍华和编剧李樯及汤唯、冯绍峰等众星悉数亮相。悉，电影确定将于10月1日公映。</textarea>
+                <input type="button" id="segButton" class="btn btn-arrow btn-radius" value="咻咻咻"/>
 
-            <div class="btn-group btn-group-lg navbar-right">
-                <input type="button" class="btn btn-primary" id="segButton" value="咻咻咻"/>
+                <div class="warn-msg hide">
+                    <span class="txt">目前仅支持GBK字符集。分析结果已过滤暂不支持的语言或字符。</span>
+                </div>
+            </div>
+        </form>
+        <div class="main-title">
+            <span class="dot-line-gray"></span>
+            <span class="title">分析结果</span>
+        </div>
+        <div class="demo-content">
+            <div id="sideBar" class="col-xs-3 bs-sidebar" width="100%" role="complementary">
+                <div class="chunk bs-sidebar-chunk">
+                    <ul class="nav">
+                        <li class=" analysis">
+                            <a class="hide" href="#overview-analysis"></a>
+
+                            <div class="arrow"></div>
+                            <div class="title">
+                                <a href="#overview-analysis"><span class="icon"></span>精准分词</a>
+                            </div>
+                            <div class="line"></div>
+                        </li>
+                        <li class=" ner">
+                            <a class="hide" href="#overview-index"></a>
+
+                            <div class="arrow"></div>
+                            <div class="title">
+                                <a href="#overview-index"><span class="icon"></span>索引分词</a>
+                            </div>
+                            <div class="line"></div>
+                        </li>
+                        <li class=" depend">
+                            <a class="hide" href="#overview-nlp"></a>
+
+                            <div class="arrow"></div>
+                            <div class="title">
+                                <a href="#overview-nlp"><span class="icon"></span>NLP分词</a>
+                            </div>
+                            <div class="line"></div>
+                        </li>
+                        <li class=" info">
+                            <a class="hide" href="#overview-crf"></a>
+
+                            <div class="arrow"></div>
+                            <div class="title">
+                                <a href="#overview-crf"><span class="icon"></span>CRF分词</a>
+                            </div>
+                            <div class="line"></div>
+                        </li>
+
+                        <li class=" emotion">
+                            <a class="hide" href="#overview-pinyin"></a>
+
+                            <div class="arrow"></div>
+                            <div class="title">
+                                <a href="#overview-pinyin"><span class="icon"></span>拼音标注</a>
+                            </div>
+                            <div class="line"></div>
+                        </li>
+                        <li class=" summary">
+                            <a class="hide" href="#overview-summary"></a>
+
+                            <div class="arrow"></div>
+                            <div class="title">
+                                <a href="#overview-summary"><span class="icon"></span>摘要提取</a>
+                            </div>
+                            <div class="line"></div>
+                        </li>
+
+                        <li class=" key">
+                            <a class="hide" href="#overview-key"></a>
+
+                            <div class="arrow"></div>
+                            <div class="title">
+                                <a href="#overview-key"><span class="icon"></span>关键词提取</a>
+                            </div>
+                            <div class="line"></div>
+                        </li>
+                        <!--<li class=" semantic">
+                            <a class="hide" href="#overview-semantic"></a>
+
+                            <div class="arrow"></div>
+                            <div class="title">
+                                <a href="#overview-semantic"><span class="icon"></span>语义联想</a>
+                            </div>
+                            <div class="line"></div>
+                        </li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-9 main-content" role="main">
+                <div id="overview-analysis" class="chunk">
+                    <div class="col-xs-12">
+                        <div class="title">精准分词:</div>
+                    </div>
+                    <iframe name="BASE" style="width: 100%"></iframe>
+                    <div class="col-xs-3">
+                        <dl class="word-mean"></dl>
+                    </div>
+                </div>
+
+                <div id="overview-index" class="chunk">
+                    <div class="col-xs-12">
+                        <div class="title">索引分词:</div>
+                    </div>
+                    <iframe name="INDEX" style="width: 100%"></iframe>
+                    <div class="col-xs-3">
+                        <dl class="word-mean"></dl>
+                    </div>
+                </div>
+
+                <div id="overview-nlp" class="chunk">
+                    <div class="title">NLP分词:</div>
+                    <iframe name="NLP" style="width: 100%"></iframe>
+                </div>
+                <div id="overview-crf" class="chunk">
+                    <div class="title">CRF分词:</div>
+                    <iframe name="CRF" style="width: 100%"></iframe>
+                </div>
+
+                <div id="overview-pinyin" class="chunk">
+                    <div class="title">拼音标注:</div>
+                    <iframe name="PINYIN" style="width: 100%"></iframe>
+                </div>
+                <div id="overview-summary" class="chunk">
+                    <div  class="col-xs-12">
+                        <div class="title">摘要提取:</div>
+                    </div>
+                    <iframe name="SUMMARY" style="width: 100%"></iframe>
+                </div>
+
+                <div id="overview-key" class="chunk">
+                    <div class="title">关键词提取:</div>
+                    <iframe name="KEYWORD" style="width: 100%"></iframe>
+                </div>
+                <!--<div id="overview-semantic" class="chunk">
+                    <div class="title">语义联想(文本推荐):</div>
+                    <iframe name="RECOMMEND" style="width: 100%"></iframe>
+                </div>-->
             </div>
         </div>
-    </form>
-    <div class="starter-template">
 
-        <h4>精准 分词方式</h4>
-        <iframe name="BASE" style="width: 100%"></iframe>
-        <h4>索引 分词方式</h4>
-        <iframe name="INDEX" style="width: 100%"></iframe>
-        <h4>NLP 分词方式</h4>
-        <iframe name="NLP" style="width: 100%"></iframe>
-        <h4>CRF 分词方式</h4>
-        <iframe name="CRF" style="width: 100%"></iframe>
-        <h4>HMM 分词方式</h4>
-        <iframe name="HMM" style="width: 100%"></iframe>
-        <h4>N最短路 分词方式</h4>
-        <iframe name="NSHORT" style="width: 100%"></iframe>
-        <h4>汉字转拼音</h4>
-        <iframe name="PINYIN" style="width: 100%"></iframe>
-        <h4>繁体 分词方式</h4>
-        <iframe name="TRADITIONALCHINESE" style="width: 100%"></iframe>
-        <h4>繁转简</h4>
-        <iframe name="SIMPLECHINESE" style="width: 100%"></iframe>
-        <h4>关键词提取</h4>
-        <iframe name="KEYWORD" style="width: 100%"></iframe>
-        <h4>摘要提取</h4>
-        <iframe name="SUMMARY" style="width: 100%"></iframe>
+    </div>
+    <div id="btn-back-top">
+        <span class="icon"></span>
     </div>
 </div>
-<!-- /.container -->
-
-
-<!-- Bootstrap core JavaScript
-================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="js/bootstrap.min.js"></script>
 </body>
