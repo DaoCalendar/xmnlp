@@ -17,7 +17,7 @@ public class DemoKeyword
                 "但两者的界限并不非常清楚，特别是在中国。" +
                 "软件从业人员分为初级程序员、高级程序员、系统" +
                 "分析员和项目经理四大类。";
-        List<String> keywordList = Xmnlp.extractKeyword(content, 10);
+        List<String> keywordList = Xmnlp.extractKeyword(content, 5);
         System.out.println(keywordList);
     }
 }

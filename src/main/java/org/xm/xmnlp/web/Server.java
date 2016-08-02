@@ -19,7 +19,7 @@ import static org.xm.xmnlp.util.Predefine.logger;
 
 /**
  * http 服务类
- * <p>
+ * <p/>
  * Created by xuming on 2016/8/1.
  */
 public class Server {
@@ -29,7 +29,7 @@ public class Server {
     public void startServer(int serverPort) throws Exception {
         logger.info("start server ...");
         HttpServerProvider provider = HttpServerProvider.provider();
-        HttpServer httpServer = provider.createHttpServer(new InetSocketAddress(serverPort), 100); //监听端口6666,能同时接100个请求
+        HttpServer httpServer = provider.createHttpServer(new InetSocketAddress(serverPort), 100); //监听端口,能同时接100个请求
         httpServer.createContext("/", new MHttpHandler());
         httpServer.setExecutor(null);
         httpServer.start();
@@ -96,7 +96,7 @@ public class Server {
             out.flush();
         }
 
-        private Map<String, String> parseParamers(HttpExchange httpExchange) throws UnsupportedEncodingException, IOException {
+        private Map<String, String> parseParamers(HttpExchange httpExchange) throws IOException {
             BufferedReader reader = null;
             try {
                 Map<String, String> parameters = new HashMap<String, String>();
@@ -130,9 +130,9 @@ public class Server {
             String split[] = query.split("\\?");
             query = split[split.length - 1];
             split = query.split("&");
-            String[] param = null;
-            String key = null;
-            String value = null;
+            String[] param ;
+            String key ;
+            String value ;
             for (String kv : split) {
                 try {
                     param = kv.split("=");
@@ -142,7 +142,7 @@ public class Server {
                         parameters.put(key, value);
                     }
                 } catch (UnsupportedEncodingException e) {
-                    // TODO Auto-generated catch block
+                    System.out.println("encoding error");
                     e.printStackTrace();
                 }
             }
@@ -155,10 +155,9 @@ public class Server {
             System.err.println("Usage: nlp Server <serverPort> so by default 8888");
             args = new String[]{"8888"};
         }
-        /* warm up ansj engine */
-		/* FIXME: dirty hack here... */
+        /* warm up engine */
         System.out.println(StandardTokenizer.segment(HI));
-		/* set up server */
+        /* set up server */
         int serverPort = Integer.valueOf(args[0]);
         new Server().startServer(serverPort);
     }
