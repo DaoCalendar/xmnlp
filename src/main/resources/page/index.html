@@ -10,26 +10,67 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css"
-          href="http://static.bosonnlp.com/vendor/jquery-ui/themes/smoothness/jquery-ui.min.css"/>
-    <link rel="stylesheet" type="text/css" href="http://static.bosonnlp.com/stylesheets/global.css?01e4aed"/>
-
-    <link rel="stylesheet" type="text/css"
-          href="http://static.bosonnlp.com/vendor/css-toggle-switch/dist/toggle-switch.min.css"/>
-    <link rel="stylesheet" type="text/css" href="http://static.bosonnlp.com/stylesheets/demo.css?01e4aed"/>
+    <link rel="stylesheet" type="text/css" href="css/global.css"/>
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/toggle-switch.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
 
     <style>
         body {
             padding-top: 50px;
         }
+        div.x-goto-top {
+            display: none;
+            opacity: 0.9;
+            z-index: 999999;
+            position: fixed;
+            bottom: 113px;
+            right: 5%;
+            margin-left: 40px;
+            width: 38px;
+            height: 38px;
+            border-radius: 3px;
+            cursor: pointer;
+            background-color: #f5f5f5;
+            border: 1px solid #0593d3;
+        }
 
-        .starter-template {
-            padding: 40px 15px;
-            text-align: center;
+        div.x-goto-top:hover {
+            background-color: #fafafa;
+            border-color: #0482ba;
+        }
+
+        div.x-goto-top:hover div.x-arrow {
+            border-bottom-color: #0482ba;
+        }
+
+        div.x-goto-top:hover div.x-stick {
+            background-color: #0482ba;
+        }
+
+        div.x-goto-top div.x-arrow {
+            position: absolute;
+            left: 10px;
+            top: -1px;
+            width: 0;
+            height: 0;
+            border: 9px solid transparent;
+            border-bottom-color: #0593d3;
+        }
+
+        div.x-goto-top div.x-stick {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            width: 8px;
+            height: 14px;
+            display: block;
+            border-radius: 1px;
+            background-color: #0593d3;
         }
     </style>
     <script src="js/jquery.min.js"></script>
-
+    <script src="js/bootstrap.min.js"></script>
     <script>
         $(document).ready(
                 function () {
@@ -52,24 +93,24 @@
                         $("#form1").submit();
 
                         /*$("#form1").attr("action", "../?method=hmm");
-                        $("#form1").attr("target", "HMM");
-                        $("#form1").submit();*/
+                         $("#form1").attr("target", "HMM");
+                         $("#form1").submit();*/
 
                         /*$("#form1").attr("action", "../?method=nshort");
-                        $("#form1").attr("target", "NSHORT");
-                        $("#form1").submit();*/
+                         $("#form1").attr("target", "NSHORT");
+                         $("#form1").submit();*/
 
                         $("#form1").attr("action", "../?method=pinyin");
                         $("#form1").attr("target", "PINYIN");
                         $("#form1").submit();
 
                         /*$("#form1").attr("action", "../?method=traditionalchinese");
-                        $("#form1").attr("target", "TRADITIONALCHINESE");
-                        $("#form1").submit();*/
+                         $("#form1").attr("target", "TRADITIONALCHINESE");
+                         $("#form1").submit();*/
 
                         /*$("#form1").attr("action", "../?method=simplechinese");
-                        $("#form1").attr("target", "SIMPLECHINESE");
-                        $("#form1").submit();*/
+                         $("#form1").attr("target", "SIMPLECHINESE");
+                         $("#form1").submit();*/
 
                         $("#form1").attr("action", "../?method=keyword");
                         $("#form1").attr("target", "KEYWORD");
@@ -80,8 +121,8 @@
                         $("#form1").submit();
 
                         /*$("#form1").attr("action", "../?method=recommend");
-                        $("#form1").attr("target", "RECOMMEND");
-                        $("#form1").submit();*/
+                         $("#form1").attr("target", "RECOMMEND");
+                         $("#form1").submit();*/
                     });
 
                 });
@@ -89,6 +130,10 @@
 
 </head>
 <body>
+<div class="x-goto-top">
+    <div class="x-arrow"></div>
+    <div class="x-stick"></div>
+</div>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -99,7 +144,7 @@
                     class="icon-bar"></span> <span class="icon-bar"></span> <span
                     class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">xmnlp</a>
+            <a class="navbar-brand" href="#">NLP工具-xmnlp</a>
         </div>
     </div>
 </div>
@@ -129,7 +174,7 @@
             <span class="title">分析结果</span>
         </div>
         <div class="demo-content">
-            <div id="sideBar" class="col-xs-3 bs-sidebar" width="100%" role="complementary">
+            <div id="sideBar" class="col-xs-3 bs-sidebar"  role="complementary">
                 <div class="chunk bs-sidebar-chunk">
                     <ul class="nav">
                         <li class=" analysis">
@@ -244,7 +289,7 @@
                     <iframe name="PINYIN" style="width: 100%"></iframe>
                 </div>
                 <div id="overview-summary" class="chunk">
-                    <div  class="col-xs-12">
+                    <div class="col-xs-12">
                         <div class="title">摘要提取:</div>
                     </div>
                     <iframe name="SUMMARY" style="width: 100%"></iframe>
@@ -262,12 +307,11 @@
         </div>
 
     </div>
-    <div id="btn-back-top">
+    <!--<div id="btn-back-top">
         <span class="icon"></span>
-    </div>
+    </div>-->
 </div>
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="js/bootstrap.min.js"></script>
+
 </body>
 </html>
 
