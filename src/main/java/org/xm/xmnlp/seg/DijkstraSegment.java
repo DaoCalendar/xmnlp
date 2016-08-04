@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 /**
- * 最短路径分词
+ * 最短路径分词，最短路求解采用Dijkstra算法
  */
 public class DijkstraSegment extends WordBasedModelSegment {
     @Override
