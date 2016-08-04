@@ -7,7 +7,6 @@ import org.xm.xmnlp.recognition.person.JapanesePersonRecognition;
 import org.xm.xmnlp.recognition.person.PersonRecognition;
 import org.xm.xmnlp.recognition.person.TranslatedPersonRecognition;
 import org.xm.xmnlp.recognition.place.PlaceRecognition;
-import org.xm.xmnlp.seg.WordBasedModelSegment;
 import org.xm.xmnlp.seg.domain.Term;
 import org.xm.xmnlp.seg.domain.Vertex;
 import org.xm.xmnlp.seg.domain.WordNet;
