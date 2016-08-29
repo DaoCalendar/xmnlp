@@ -77,6 +77,7 @@ public class Segmenter {
                 }
             }
             route.put(i, candidate);
+            //System.out.println(candidate.toString());
         }
         return route;
     }

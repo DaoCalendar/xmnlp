@@ -38,4 +38,19 @@ public class MathTools {
 //        logger.info(String.format("%5s frequency:%6d, %s nTwoWordsFreq:%3d, weight:%.2f", from.word, frequency, from.word + "@" + to.word, nTwoWordsFreq, value));
         return value;
     }
+
+    // test calc without ngram
+    public static double calc(Vertex from, Vertex to) {
+        int frequency = from.getAttribute().totalFrequency;
+        if (frequency == 0) {
+            frequency = 1;  // 防止发生除零错误
+        }
+        double nTwoWordsFreq = to.weight;
+        double value = -Math.log(frequency);
+//        double value = -Math.log(dSmoothingPara * frequency / (MAX_FREQUENCY) + (1 - dSmoothingPara) * ((1 - dTemp) * nTwoWordsFreq / frequency + dTemp));
+        if (value < 0.0) {
+            value = -value;
+        }
+        return value;
+    }
 }

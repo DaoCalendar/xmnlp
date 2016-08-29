@@ -5,7 +5,6 @@ import org.xm.xmnlp.collection.trie.DoubleArrayTrie;
 import org.xm.xmnlp.corpus.tag.Nature;
 import org.xm.xmnlp.dictionary.CoreDictionary;
 import org.xm.xmnlp.dictionary.CustomDictionary;
-import org.xm.xmnlp.seg.DictionaryBasedSegment;
 import org.xm.xmnlp.seg.domain.Term;
 import org.xm.xmnlp.seg.nshortpath.AtomNode;
 

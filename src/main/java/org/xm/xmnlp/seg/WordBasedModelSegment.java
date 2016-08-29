@@ -374,6 +374,8 @@ public abstract class WordBasedModelSegment extends Segment {
         }
         // 原子分词，保证图连通
         LinkedList<Vertex>[] vertexes = wordNetStorage.getVertexes();
+        String wordnetstr = wordNetStorage.toString();
+        System.out.println(wordnetstr  );
         for (int i = 1; i < vertexes.length; ) {
             if (vertexes[i].isEmpty()) {
                 int j = i + 1;

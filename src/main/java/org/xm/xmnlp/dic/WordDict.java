@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class WordDict {
     private static WordDict wordDict;
-    private static final String MAIN_DICT = "/core.txt";
+    private static final String MAIN_DICT = "/dict.txt";
     private static String USER_DICT = "/user.txt";
 
     public final Map<String, Double> freqs = new HashMap<String, Double>();

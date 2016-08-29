@@ -56,6 +56,7 @@ public class Vertex {
 
     public void updateFrom(Vertex from) {
         double weight = from.weight + MathTools.calculateWeight(from, this);
+//        double weight = from.weight + MathTools.calc(from, this);
         if (this.from == null || this.weight > weight) {
             this.from = from;
             this.weight = weight;

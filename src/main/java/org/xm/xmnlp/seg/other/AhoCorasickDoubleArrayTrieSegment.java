@@ -4,7 +4,6 @@ package org.xm.xmnlp.seg.other;
 import org.xm.xmnlp.collection.ahocorasick.AhoCorasickDoubleArrayTrie;
 import org.xm.xmnlp.corpus.tag.Nature;
 import org.xm.xmnlp.dictionary.CoreDictionary;
-import org.xm.xmnlp.seg.DictionaryBasedSegment;
 import org.xm.xmnlp.seg.Segment;
 import org.xm.xmnlp.seg.domain.Term;
 import org.xm.xmnlp.util.IOUtil;

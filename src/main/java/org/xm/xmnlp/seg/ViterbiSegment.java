@@ -91,7 +91,7 @@ public class ViterbiSegment extends WordBasedModelSegment {
         for (Vertex node : nodes[1]) {
             node.updateFrom(nodes[0].getFirst());
         }
-        for (int i = 1; i < nodes.length - 1; ++i) {
+        for (int i = 1; i < nodes.length - 1; ++i) {// 三层循环，你也不怕噎着
             LinkedList<Vertex> nodeArray = nodes[i];
             if (nodeArray == null) continue;
             for (Vertex node : nodeArray) { // 前缀词典的内部node结果比较选一个
