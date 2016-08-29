@@ -159,11 +159,13 @@ public abstract class WordBasedModelSegment extends Segment {
                     else {
                         current.confirmNature(Nature.m);
                     }
-                } else {
+                }
+                else {
                     //===== 3、如果最后一个汉字是"点" ，则认为当前数字是时间
                     if (current.realWord.endsWith("点")) {
                         current.confirmNature(Nature.t, true);
-                    } else {
+                    }
+                    else {
                         char[] tmpCharArray = current.realWord.toCharArray();
                         String lastChar = String.valueOf(tmpCharArray[tmpCharArray.length - 1]);
                         //===== 4、如果当前串最后一个汉字不是"∶·．／"和半角的'.''/'，那么是数
@@ -211,7 +213,8 @@ public abstract class WordBasedModelSegment extends Segment {
                 offset += term.length();
                 resultList.add(term);
             }
-        } else {
+        }
+        else {
             for (int i = 0; i < length; ++i) {
                 Vertex vertex = iterator.next();
                 Term term = convert(vertex);
@@ -352,7 +355,8 @@ public abstract class WordBasedModelSegment extends Segment {
 //                System.out.println("before:" + linkedArray);
                 listIterator.remove();
 //                System.out.println("after:" + linkedArray);
-            } else {
+            }
+            else {
                 current = next;
             }
         }
@@ -374,8 +378,7 @@ public abstract class WordBasedModelSegment extends Segment {
         }
         // 原子分词，保证图连通
         LinkedList<Vertex>[] vertexes = wordNetStorage.getVertexes();
-        String wordnetstr = wordNetStorage.toString();
-        System.out.println(wordnetstr  );
+//        System.out.println(wordNetStorage.toString());
         for (int i = 1; i < vertexes.length; ) {
             if (vertexes[i].isEmpty()) {
                 int j = i + 1;
@@ -384,7 +387,8 @@ public abstract class WordBasedModelSegment extends Segment {
                 }
                 wordNetStorage.add(i, quickAtomSegment(charArray, i - 1, j - 1));
                 i = j;
-            } else i += vertexes[i].getLast().realWord.length();
+            }
+            else i += vertexes[i].getLast().realWord.length();
         }
     }
 

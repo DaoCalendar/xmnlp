@@ -6,6 +6,7 @@ import org.xm.xmnlp.collection.ahocorasick.AhoCorasickDoubleArrayTrie;
 import org.xm.xmnlp.dictionary.BaseSearcher;
 import org.xm.xmnlp.dictionary.CoreDictionary;
 import org.xm.xmnlp.dictionary.CustomDictionary;
+import org.xm.xmnlp.seg.other.AhoCorasickDoubleArrayTrieSegment;
 
 import java.util.Map;
 
@@ -24,7 +25,7 @@ public class DemoCustomDictionary {
         System.out.println(CustomDictionary.add("单身狗", "nz 1024 n 1"));
         System.out.println(CustomDictionary.get("单身狗"));
 
-        String text = "攻城狮逆袭单身狗，迎娶白富美，走上人生巅峰，这是AceBeverage公司的中华人名共和国的新世纪。";  // 怎么可能噗哈哈！
+        String text = "攻城狮逆袭单身狗，迎娶白富美，走上人生巅峰，这是AceBeverage公司的中华人名共和国的新世纪。结婚的和尚未结婚的，";  // 怎么可能噗哈哈！
 
         // DoubleArrayTrie分词
         final char[] charArray = text.toCharArray();
@@ -41,6 +42,9 @@ public class DemoCustomDictionary {
             System.out.println(entry);
         }
 
+        AhoCorasickDoubleArrayTrieSegment acseg = new AhoCorasickDoubleArrayTrieSegment().loadDictionary(Xmnlp.Config.CoreDictionaryPath);
+        // AC分词
+        System.out.println("AC分词:"+acseg.seg(text).toString());
         // 标准分词
         System.out.println(Xmnlp.segment(text));
 

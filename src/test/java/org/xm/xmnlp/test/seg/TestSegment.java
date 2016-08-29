@@ -37,8 +37,12 @@ public class TestSegment extends TestCase {
         Xmnlp.Config.enableDebug();
         CustomDictionary.add("网剧");
         Segment seg = new DijkstraSegment();
-        List<Term> termList = seg.seg("优酷总裁魏明介绍了优酷2015年的内容战略，表示要以“大电影、大网剧、大综艺”为关键词");
+        List<Term> termList = seg.seg("结婚的和尚未结婚的,优酷总裁魏明介绍了优酷2015年的内容战略，表示要以“大电影、大网剧、大综艺”为关键词.");
         System.out.println(termList);
+
+        Segment seg1 = new ViterbiSegment();
+        List<Term> termList1 = seg1.seg("结婚的和尚未结婚的1,优酷总裁魏明介绍了优酷2015年的内容战略，表示要以“大电影、大网剧、大综艺”为关键词.");
+        System.out.println(termList1);
     }
 
     public void testNotional() throws Exception {
@@ -84,12 +88,14 @@ public class TestSegment extends TestCase {
         Xmnlp.Config.enableDebug();
         Segment segment = new DijkstraSegment().enableOrganizationRecognize(true);
         System.out.println(segment.seg("张克智与潍坊地铁建设工程公司"));
+        Segment seg= new DijkstraSegment();
+        System.out.println(seg.seg("张克智与潍坊地铁建设工程公司1"));
     }
 
     public void testACSegment() throws Exception {
         Segment segment = new DoubleArrayTrieSegment();
         segment.enablePartOfSpeechTagging(true);
-        System.out.println(segment.seg("江西鄱阳湖干枯，中国最大淡水湖变成大草原"));
+        System.out.println(segment.seg("江西鄱阳湖干枯，中国最大淡水湖变成大草原.张克智与潍坊地铁建设工程公司1结婚的和尚未结婚的"));
     }
 
     public void testIssue2() throws Exception {

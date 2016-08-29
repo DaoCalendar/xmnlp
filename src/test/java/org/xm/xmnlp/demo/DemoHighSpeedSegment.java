@@ -10,7 +10,7 @@ import org.xm.xmnlp.tokenizer.SpeedTokenizer;
  */
 public class DemoHighSpeedSegment {
     public static void main(String[] args) {
-        String text = "江西鄱阳湖干枯，中国最大淡水湖变成大草原";
+        String text = "结婚的和尚未结婚的，一次性交易，我在湖北餐馆吃团圆饭。江西鄱阳湖干枯，中国最大淡水湖变成大草原";
         Xmnlp.Config.ShowTermNature = false;
         System.out.println(SpeedTokenizer.segment(text));
         long start = System.currentTimeMillis();

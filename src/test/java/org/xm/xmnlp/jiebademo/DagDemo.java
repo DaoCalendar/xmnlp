@@ -1,4 +1,4 @@
-package org.xm.xmnlp.demo;
+package org.xm.xmnlp.jiebademo;
 
 
 import org.xm.xmnlp.segword.Segmenter;

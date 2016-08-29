@@ -28,8 +28,7 @@ public class DoubleArrayTrieSegment extends DictionaryBasedSegment {
         char[] charArray = sentence;
         final int[] wordNet = new int[charArray.length];
         Arrays.fill(wordNet, 1);
-        final Nature[] natureArray =
-                config.speechTagging ? new Nature[charArray.length] : null;
+        final Nature[] natureArray = config.speechTagging ? new Nature[charArray.length] : null;
         DoubleArrayTrie<CoreDictionary.Attribute>.Searcher searcher =
                 CoreDictionary.trie.getSearcher(sentence, 0);
         while (searcher.next()) {
