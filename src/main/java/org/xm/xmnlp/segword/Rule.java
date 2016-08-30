@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Vector;
 
 /**
- * 规则分词
+ * 基础分词算法
  * <p>
  * xuming
  */
@@ -18,7 +18,7 @@ public class Rule {
 
 
     /**
-     * @Title: 反向最大匹配
+     * 反向最大匹配
      */
     public static Vector<String> reverseMaxSeg(String input) {
         if (input == null || input.isEmpty()) {
@@ -31,7 +31,8 @@ public class Rule {
             //temp就是待分词的短语
             if (input.length() < max_words) {
                 temp = input;
-            } else {
+            }
+            else {
                 temp = input.substring(input.length() - max_words);
             }
             while (temp.length() > 0) {
@@ -40,7 +41,8 @@ public class Rule {
                     results.add(temp);
                     input = input.substring(0, input.length() - temp.length());
                     break;
-                } else {
+                }
+                else {
                     //待分词短语从左向右不断变短
                     temp = temp.substring(1);
                 }
@@ -52,7 +54,7 @@ public class Rule {
 
 
     /**
-     * @Title: 正向最大匹配
+     * 正向最大匹配
      */
     public static Vector<String> forwardMaxSeg(String input) {
         if (input == null || input.isEmpty()) {
@@ -64,7 +66,8 @@ public class Rule {
             String temp;
             if (input.length() < max_words) {
                 temp = input;
-            } else {
+            }
+            else {
                 temp = input.substring(0, max_words);
             }
             while (temp.length() > 0) {
@@ -72,7 +75,8 @@ public class Rule {
                     results.add(temp);
                     input = input.substring(temp.length());
                     break;
-                } else {
+                }
+                else {
                     temp = temp.substring(0, temp.length() - 1);
                 }
             }
@@ -81,7 +85,7 @@ public class Rule {
     }
 
     /**
-     * @Title: 双向匹配分词 Bidirectional maximum matching
+     * 双向匹配分词 Bidirectional maximum matching
      * fresults 正向匹配的分词结果
      * bresults 逆向匹配的分词结果
      */
@@ -120,4 +124,61 @@ public class Rule {
         }
     }
 
+
+    /**
+     * 正向最小匹配
+     */
+    public static Vector<String> forwardMinSeg(String text) {
+        if (text == null || text.isEmpty()) {
+            return null;
+        }
+        Vector<String> results = new Vector<String>();
+        int len = 1;
+        int start = 0;
+        while (start < text.length()) {
+            while (dictionary.get(text.substring(start, len + start)) == null) {
+                if (len == (text.length() - start)) {
+                    len = 1;
+                    break;
+                }
+                len++;
+            }
+            results.add(text.substring(start, len + start));
+            start += len;
+            len = 1;
+        }
+        return results;
+    }
+
+    /**
+     * 反向最小匹配
+     *
+     * @param text 输入字符串
+     * @return 列表
+     */
+    public static Vector<String> reverseMinSeg(String text) {
+        if (text == null || text.isEmpty()) {
+            return null;
+        }
+        Vector<String> results = new Vector<String>();
+        int length = text.length();
+        int step = 1;
+        int start = length - step;
+        while (start > 0) {
+            while (dictionary.get(text.substring(start, step + start)) == null) {
+                step++;
+                start--;
+                if (start < 0) {
+                    start += step - 1;
+                    step = 1;
+                    break;
+                }
+            }
+            results.add(text.substring(start, step + start));
+            start--;
+            step = 1;
+        }
+        Collections.reverse(results);
+        return results;
+    }
 }

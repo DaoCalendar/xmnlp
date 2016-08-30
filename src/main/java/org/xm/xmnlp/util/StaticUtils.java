@@ -37,7 +37,7 @@ public class StaticUtils {
             String[] strs = null;
             String[] cna = null;
             while ((temp = br.readLine()) != null) {
-                strs = temp.split("[\t]");
+                strs = temp.split("[\t ]+");
                 cna = new String[2];
                 if (strs.length == 2) {
                     cna[0] = strs[1];
