@@ -27,21 +27,24 @@ public class RuleSegDemo {
             System.out.print(String.format(Locale.getDefault(), "\n%s\n%s", sentence, f.toString()));
         }
         System.out.println();
-        Vector<String> a0 = Rule.forwardMaxSeg("北京天安门广场人民币种");
+        Vector<String> a0 = Rule.forwardMaxSeg("北京天安门广场人民币种，种族主义，结婚的和尚未结婚的");
         System.out.println("forwardMaxSeg:"+a0);
 
-        Vector<String> a = Rule.reverseMaxSeg("北京天安门广场人民币种");
+        Vector<String> a = Rule.reverseMaxSeg("北京天安门广场人民币种，种族主义，结婚的和尚未结婚的");
         String rms = a.toString();
         System.out.println("reverseMaxSeg:"+rms);
 
-        Vector<String> b = Rule.biMaxSeg("北京天安门广场人民币种，种族主义");
+        Vector<String> b = Rule.biMaxSeg("北京天安门广场人民币种，种族主义，结婚的和尚未结婚的");
         System.out.println("biMaxSeg:"+b);
 
-        Vector<String> c = Rule.forwardMinSeg("北京天安门广场人民币种，种族主义");
+        Vector<String> c = Rule.forwardMinSeg("北京天安门广场人民币种，种族主义，结婚的和尚未结婚的");
         System.out.println("forwardMinSeg:"+c);
 
-        Vector<String> d = Rule.reverseMinSeg("北京天安门广场人民币种，种族主义");
+        Vector<String> d = Rule.reverseMinSeg("北京天安门广场人民币种，种族主义，结婚的和尚未结婚的");
         System.out.println("reverseMinSeg:"+d);
+
+        Vector<String> e = Rule.biMinSeg("北京天安门广场人民币种，种族主义，结婚的和尚未结婚的");
+        System.out.println("biMinSeg:"+e);
 
     }
 }
