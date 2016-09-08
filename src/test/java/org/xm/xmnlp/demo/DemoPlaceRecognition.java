@@ -18,6 +18,7 @@ public class DemoPlaceRecognition {
         };
         System.out.println("未开启地名识别的效果：" + Xmnlp.segment("蓝翔给宁夏固原市彭阳县红河镇黑牛沟村捐赠了挖掘机，"));
 
+        Xmnlp.Config.enableDebug();
         Segment segment = Xmnlp.newSegment().enablePlaceRecognize(true).enableOrganizationRecognize(true);
         for (String sentence : testCase) {
             List<Term> termList = segment.seg(sentence);

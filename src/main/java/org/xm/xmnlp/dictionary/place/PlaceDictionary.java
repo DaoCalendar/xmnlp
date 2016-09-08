@@ -67,7 +67,6 @@ public class PlaceDictionary {
      * @param wordNetAll
      */
     public static void parsePattern(List<NS> nsList, List<Vertex> vertexList, final WordNet wordNetOptimum, final WordNet wordNetAll) {
-//        ListIterator<Vertex> listIterator = vertexList.listIterator();
         StringBuilder sbPattern = new StringBuilder(nsList.size());
         for (NS ns : nsList) {
             sbPattern.append(ns.toString());

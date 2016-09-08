@@ -17,7 +17,7 @@ public class RuleSegTest extends TestCase {
                     "北京天安门广场，人民币种种族主义静态结果",
                     "找美女",
                     "干脆就把那部蒙人的闲法给废了拉倒！" +
-                            "RT @laoshipukong : 27日，全国人大常委会第三次审议侵权责任法"};
+                    "RT @la : 27日，全国人大常委会第三次审议侵权责任法"};
 
     @Test
     public void testForwardMaxSeg() {

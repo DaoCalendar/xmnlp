@@ -8,12 +8,12 @@ import org.xm.xmnlp.math.Viterbi;
  * @author xuming
  */
 public class TestViterbi extends TestCase {
-    static enum Weather {
+    enum Weather {
         Rainy,
         Sunny,
     }
 
-    static enum Activity {
+    enum Activity {
         walk,
         shop,
         clean,
