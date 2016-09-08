@@ -56,11 +56,14 @@
 	- 文本推荐演示
 11. add rule segment:forwardMinSeg,reverseMinSeg,biMinSeg,biMaxMinSeg,MaxNgram. xuming 20160830
     - 正向最小分词
-    - 正向最小分词
+    - 反向最小分词
     - 双向最小分词
     - 双向最大最小分词
     - 最大Ngram分值算法分词
-
+12. add rule ambiguity test and jieba ambiguity test. xuming 20160908
+    - 规则分词（正向、反向、双向匹配算法等）歧义性测试
+    - 结巴分词歧义性测试
+    
 ---
 
 
