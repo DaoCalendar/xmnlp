@@ -61,8 +61,11 @@
     - 双向最大最小分词
     - 最大Ngram分值算法分词
 12. add rule ambiguity test and jieba ambiguity test. xuming 20160908
-    - 规则分词（正向、反向、双向匹配算法等）歧义性测试
-    - 结巴分词歧义性测试
+    - 规则分词（正向、反向、双向匹配算法等）歧义性测试（效果不理想）
+    - 结巴分词歧义性测试（效果不理想）
+13. add ansj segmentation. xuming 20160928
+    - ansj中文分词器
+    
     
 ---
 
