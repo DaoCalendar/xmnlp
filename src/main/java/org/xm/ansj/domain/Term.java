@@ -148,7 +148,7 @@ public class Term implements Serializable {
         this.item = item;
     }
 
-    public Term getNext() {
+    public Term next() {
         return next;
     }
 
