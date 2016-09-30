@@ -21,9 +21,6 @@ import org.xm.ansj.dictionary.NgramDictionary;
 public class NgramDictionaryTest {
     @Test
     public void testGetTwoWordFreq() {
-//        Term a = new Term("细心", 1, "n", 1);
-//        Term b = new Term("照顾", 3, "v", 1);
-//        System.out.println(NgramDictionary.getTwoWordFreq(null, null));
         System.out.println("hh");
     }
 

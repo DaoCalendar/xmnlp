@@ -12,9 +12,14 @@
 
 package org.xm.ansj.test.app.keyword;
 
+import org.junit.Test;
+
 /**
  * @author xuming
  */
 public class KeywordTest {
-
+    @Test
+    public void test() {
+        System.out.println("hh");
+    }
 }
