@@ -78,4 +78,11 @@ public class NatureDictionary {
         }
         return nature;
     }
+
+    public static int getTwoNatureFreq(Nature from, Nature to) {
+        if (from.index < 0 || to.index < 0) {
+            return 0;
+        }
+        return NATURE_TABLE[from.index][to.index];
+    }
 }
