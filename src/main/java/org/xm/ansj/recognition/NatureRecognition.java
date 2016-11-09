@@ -1,6 +1,6 @@
 package org.xm.ansj.recognition;
-
-import com.sun.istack.internal.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.nlpcn.commons.lang.tire.domain.Forest;
 import org.nlpcn.commons.lang.tire.domain.SmartForest;
 import org.nlpcn.commons.lang.util.WordAlert;
@@ -20,7 +20,7 @@ import java.util.List;
  * @author xuming
  */
 public class NatureRecognition implements IRecognition {
-    public static final Logger logger = Logger.getLogger(NatureRecognition.class);
+    public static final Logger logger = LoggerFactory.getLogger(NatureRecognition.class);
     private static final Forest SUFFIX_FOREST = new Forest();
 
     static {
@@ -36,7 +36,7 @@ public class NatureRecognition implements IRecognition {
                 SUFFIX_FOREST.add(word, new String[]{split[1]});
             }
         } catch (IOException e) {
-            logger.warning("IO exception", e);
+            logger.warn("IO exception", e);
         }
     }
 

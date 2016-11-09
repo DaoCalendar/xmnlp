@@ -14,7 +14,9 @@ public class DemoBaseSeg {
 //        Xmnlp.Config.Normalization = true;
         Config config = new Config();
         config.useCustomDictionary = false;
-        List<Term> termList = StandardTokenizer.segment("物理学起来费劲，商品和服务,符号,你好%都是符号，特殊符号￥％，ｘｉ大写转小写：F字母区别FFDr，進行在線轉換，中国人名共和国万岁,著名胡同在刘家湾？");
+        List<Term> termList = StandardTokenizer.segment("物理学起来费劲，北京小新能源公司，" +
+                "北京小李三新能源公司，北京三新能源公司，北京服装能源有限公司，商品和服务,符号,你好%都是符号，" +
+                "特殊符号￥％，ｘｉ大写转小写：F字母区别FFDr，進行在線轉換，中国人名共和国万岁,著名胡同在刘家湾？");
         System.out.println(termList);
     }
 }

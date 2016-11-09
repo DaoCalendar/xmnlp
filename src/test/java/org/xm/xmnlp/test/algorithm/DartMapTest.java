@@ -12,7 +12,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class DartMapTest extends TestCase {
-    private static final String DATA_TEST_OUT_BIN = "data/test/out.bin";
+    private static final String DATA_TEST_OUT_BIN = "data/out.bin";
     Set<String> validKeySet;
     Set<String> invalidKeySet;
     private DartMap<Integer> dartMap;

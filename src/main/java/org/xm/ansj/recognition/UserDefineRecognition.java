@@ -1,8 +1,9 @@
 package org.xm.ansj.recognition;
 
-import com.sun.istack.internal.logging.Logger;
 import org.nlpcn.commons.lang.tire.domain.Forest;
 import org.nlpcn.commons.lang.tire.domain.SmartForest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xm.ansj.dictionary.UserDefineDictionary;
 import org.xm.ansj.domain.Term;
 import org.xm.ansj.domain.TermNature;
@@ -14,7 +15,7 @@ import org.xm.ansj.util.TermUtil;
  * @author xuming
  */
 public class UserDefineRecognition implements ITermRecognition {
-    public static final Logger logger = Logger.getLogger(UserDefineRecognition.class);
+    public static final Logger logger = LoggerFactory.getLogger(UserDefineRecognition.class);
     private Term[] terms = null;
     private Forest[] forests = {UserDefineDictionary.FOREST};
     private int offe = -1;
@@ -95,7 +96,7 @@ public class UserDefineRecognition implements ITermRecognition {
         try{
             return Integer.parseInt(str);
         }catch (NumberFormatException e){
-            logger.warning(str+" not a num"+e);
+            logger.warn(str+" not a num"+e);
             return def;
         }
     }

@@ -30,7 +30,7 @@ public class DemoCRFSegment {
                         "2.34米男子娶1.53米女粉丝 称夫妻生活没问题",
                         "你看过穆赫兰道吗",
                         "国办发布网络提速降费十四条指导意见 鼓励流量不清零",
-                        "乐视超级手机能否承载贾布斯的生态梦，这个研究生会五种语言"
+                        "乐视超级手机能否承载贾布斯的生态梦，这个研究生会五种语言,硕士研究生鱼片与苹果"
                 };
         for (String sentence : sentenceArray) {
             List<Term> termList = segment.seg(sentence);
