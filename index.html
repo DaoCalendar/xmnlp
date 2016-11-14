@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Xmnlp by shibing624</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Xmnlp</h1>
+      <h2 class="project-tagline">xmnlp中文分词工具，java编写，统计概率分词+规则分词实现，功能包括人名识别，词性标注，用户自定义词典扩展，分词效果速度都超过开源版的jieba分词。 </h2>
+      <a href="https://github.com/shibing624/xmnlp" class="btn">View on GitHub</a>
+      <a href="https://github.com/shibing624/xmnlp/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/shibing624/xmnlp/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="xmnlp自然语言处理包" class="anchor" href="#xmnlp%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%8C%85" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>xmnlp自然语言处理包</h1>
+
+<h4>
+<a id="authorxumingshibing624" class="anchor" href="#authorxumingshibing624" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>author：xuming(shibing624)</h4>
+
+<h4>
+<a id="environmentjdk-16" class="anchor" href="#environmentjdk-16" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>environment：jdk 1.6</h4>
+
+<ol>
+<li>add the rule chinese word segmentation: 2016.06.21
+
+<ul>
+<li>正向最大匹配法</li>
+<li>逆向最大匹配法</li>
+<li>双向最大匹配法</li>
+</ul>
+</li>
+<li>add jieba segmentation java 2016.07.06
+
+<ul>
+<li>基于 trie 树结构实现高效词图扫描</li>
+<li>生成所有切词可能的有向无环图 DAG</li>
+<li>采用动态规划算法计算最佳切词组合</li>
+<li>基于 =HMM= 模型，采用 =Viterbi= (维特比)算法实现未登录词识别</li>
+</ul>
+</li>
+<li>add xmnlp to xmnlp 2016.07.23
+
+<ul>
+<li>基于双数组 trie 树结构实现高效词图扫描存储词典</li>
+<li>最短路径分词，最短路求解采用Viterbi算法</li>
+<li>添加人名识别功能：中文人名，日本人名，音译人名识别功能</li>
+</ul>
+</li>
+<li>alter jdk from 1.7 to 1.6 2016.07.24
+
+<ul>
+<li>兼容jdk1.6版本，把所有用jdk1.7甚至1.8的写法用1.6重写了</li>
+</ul>
+</li>
+<li>add organization recognition, place recognization ,ahocorasick algoritm and tire tree 20160724 xuming
+
+<ul>
+<li>机构名识别功能</li>
+<li>地名识别</li>
+<li>trie词典树，基于贝尔实验室的 Aho-Corasick 白皮书完成，将来可以改为双数组trie数提高效率</li>
+</ul>
+</li>
+<li>add pinyin, keyword, stopword, POS tagging, synonym dictionary and traditionary chinese to xmnlp 2016.07.24 xuming
+
+<ul>
+<li>汉字转拼音功能：结果可以显示为数字音调，符号音调，无音调，声调，声母，韵母，输入法头</li>
+<li>提取关键字</li>
+<li>添加搜索停用词</li>
+<li>词性标注</li>
+<li>同义词典</li>
+<li>简繁字体转换</li>
+</ul>
+</li>
+<li>add high speed segment, HMM segment, index segment xuming 20160730
+
+<ul>
+<li>急速分词器，基于双数组前缀树词典结构，查找词典的最大匹配分词</li>
+<li>二阶隐马模型分词器</li>
+<li>索引分词器</li>
+</ul>
+</li>
+<li>add crf segment , mutithread segment, nshort segment and all test  xuming 20160730
+
+<ul>
+<li>条件随机场模型分词器</li>
+<li>多线程处理，配合CRF分词效果和速度有保障</li>
+<li>NShort分词器</li>
+<li>全覆盖单元测试</li>
+</ul>
+</li>
+<li>add dependency parse, include 2-gram dependency model, CRF model dependency, Max Ent model dependency and all test  xuming 20160731
+
+<ul>
+<li>依存句法分析工具</li>
+<li>2-gram依存模型，根据两个词的词和词性猜测它们最可能的依存关系</li>
+<li>条件随机场（CRF）句法模型</li>
+<li>最大熵（MaxEnt）句法分析器</li>
+<li>神经网络句法模型，待完善</li>
+</ul>
+</li>
+<li>add web demo xuming 20160801
+
+<ul>
+<li>几种中文分词方式演示页面：精准分词方式，NLP分词，CRF、HMM分词（需要设置jvm：-Xmx1024M）</li>
+<li>关键词提取演示</li>
+<li>拼音标注</li>
+<li>繁体句子分词</li>
+<li>繁体字转简体</li>
+<li>句法分析</li>
+<li>文本推荐演示</li>
+</ul>
+</li>
+<li>add rule segment:forwardMinSeg,reverseMinSeg,biMinSeg,biMaxMinSeg,MaxNgram. xuming 20160830
+
+<ul>
+<li>正向最小分词</li>
+<li>反向最小分词</li>
+<li>双向最小分词</li>
+<li>双向最大最小分词</li>
+<li>最大Ngram分值算法分词</li>
+</ul>
+</li>
+<li>add rule ambiguity test and jieba ambiguity test. xuming 20160908
+
+<ul>
+<li>规则分词（正向、反向、双向匹配算法等）歧义性测试（效果不理想）</li>
+<li>结巴分词歧义性测试（效果不理想）</li>
+</ul>
+</li>
+<li>add ansj segmentation. xuming 20160928
+
+<ul>
+<li>ansj中文分词器</li>
+</ul>
+</li>
+</ol>
+
+<hr>
+
+<p><strong>xmnlp</strong>是由一系列模型与算法组成的Java工具包，目标是普及自然语言处理在生产环境中的应用。<strong>xmnlp</strong>具备功能完善、性能高效、架构清晰、语料时新、可自定义的特点。</p>
+
+<p><strong>xmnlp</strong>提供下列功能：</p>
+
+<blockquote>
+<ul>
+<li>中文分词.
+
+<ul>
+<li>最短路分词.</li>
+<li>N-最短路分词</li>
+<li>CRF分词.</li>
+<li>索引分词.</li>
+<li>极速词典分词.</li>
+<li>用户自定义词典.</li>
+</ul>
+</li>
+<li>词性标注.</li>
+<li>命名实体识别.
+
+<ul>
+<li>中国人名识别.</li>
+<li>音译人名识别.</li>
+<li>日本人名识别.</li>
+<li>地名识别.</li>
+<li>实体机构名识别.</li>
+</ul>
+</li>
+<li>关键词提取.
+
+<ul>
+<li>TextRank关键词提取.</li>
+</ul>
+</li>
+<li>自动摘要.
+
+<ul>
+<li>TextRank自动摘要.</li>
+</ul>
+</li>
+<li>短语提取.
+
+<ul>
+<li>基于互信息和左右信息熵的短语提取.</li>
+</ul>
+</li>
+<li>拼音转换.
+
+<ul>
+<li>多音字.</li>
+<li>声母.</li>
+<li>韵母.</li>
+<li>声调.</li>
+</ul>
+</li>
+<li>简繁转换.
+
+<ul>
+<li>繁体中文分词.</li>
+<li>简繁分歧词.</li>
+</ul>
+</li>
+<li>文本推荐.
+
+<ul>
+<li>语义推荐.</li>
+<li>拼音推荐.</li>
+<li>字词推荐.</li>
+</ul>
+</li>
+<li>依存句法分析.
+
+<ul>
+<li>基于神经网络的高性能依存句法分析器.</li>
+<li>MaxEnt依存句法分析.</li>
+<li>CRF依存句法分析.</li>
+</ul>
+</li>
+<li>语料库工具.
+
+<ul>
+<li>分词语料预处理.</li>
+<li>词频词性词典制作.</li>
+<li>BiGram统计.</li>
+<li>词共现统计.</li>
+<li>CoNLL语料预处理.</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+
+<p>在提供丰富功能的同时，<strong>xmnlp</strong>内部模块坚持低耦合、模型坚持惰性加载、服务坚持静态提供、词典坚持明文发布，使用非常方便，同时自带一些语料处理工具，帮助用户训练自己的语料。</p>
+
+<hr>
+
+<h2>
+<a id="如何获取" class="anchor" href="#%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>如何获取</h2>
+
+<ul>
+<li>
+<p>方式一：当前稳定版本</p>
+
+<pre><code>&lt;dependency&gt;
+        &lt;groupId&gt;com.xm&lt;/groupId&gt;
+        &lt;artifactId&gt;xmnlp&lt;/artifactId&gt;
+        &lt;version&gt;1.0.1&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>零配置，即可使用基本功能（除CRF分词、依存句法分析外的全部功能）。如果用户有自定义的需求，可以参考方式二，使用xmnlp.properties进行配置。</p>
+</li>
+<li>
+<p>方式二：下载jar、data、xmnlp.properties</p>
+
+<p>数据与程序分离，给予用户自定义的自由。</p>
+
+<p>1、下载jar</p>
+
+<p>xmnlp.jar</p>
+
+<p>2、下载data</p>
+
+<p><a href="http://pan.baidu.com/s/1jIydVsq">data.zip</a>
+  下载后解压到任意目录，接下来通过配置文件告诉xmnlp数据包的位置。</p>
+
+<p>xmnlp中的数据分为词典和模型，其中词典是词法分析必需的，模型是句法分析必需的。</p>
+
+<blockquote>
+<pre><code>data
+│
+├─dictionary
+└─model
+</code></pre>
+</blockquote>
+
+<p>用户可以自行增删替换，如果不需要句法分析功能的话，随时可以删除model文件夹。</p>
+
+<p>模型跟词典没有绝对的区别，隐马模型被做成人人都可以编辑的词典形式，不代表它不是模型。
+  GitHub代码库中已经包含了data.zip中的词典，直接编译运行自动缓存即可；模型则需要额外下载。</p>
+
+<p>3、配置文件</p>
+
+<p>示例配置文件:<code>xmnlp.properties</code> 在src的resources中。</p>
+
+<p>配置文件的作用是告诉xmnlp数据包的位置，只需修改第一行</p>
+
+<p>root=usr/home/xmnlp/
+  为data的父目录即可，比如data目录是/Users/root/Documents/data，那么root=/Users/root/Documents/ 。</p>
+
+<p>如果选用mini词典的话，则需要修改配置文件：</p>
+
+<p>CoreDictionaryPath=data/dictionary/CoreNatureDictionary.mini.txt
+  BiGramDictionaryPath=data/dictionary/CoreNatureDictionary.ngram.mini.txt</p>
+
+<p>最后将xmnlp.properties放入classpath即可，对于任何项目，都可以放到src或resources目录下，编译时IDE会自动将其复制到classpath中。</p>
+
+<p>如果放置不当，xmnlp会智能提示当前环境下的合适路径，并且尝试从项目根目录读取数据集。</p>
+</li>
+</ul>
+
+<h2>
+<a id="调用方法" class="anchor" href="#%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>调用方法</h2>
+
+<p><strong>xmnlp</strong>几乎所有的功能都可以通过工具类<code>Xmnlp</code>快捷调用，当你想不起来调用方法时，只需键入<code>Xmnlp.</code>，IDE应当会给出提示，并展示<strong>xmnlp</strong>完善的文档。</p>
+
+<p><em>推荐用户始终通过工具类<code>Xmnlp</code>调用，这么做的好处是，将来</em><em>xmnlp</em><em>升级后，用户无需修改调用代码。</em></p>
+
+<p>所有Demo都位于<a href="https://github.com/shibing624/xmnlp/tree/master/src/test/java/org/xm/xmnlp/demo">org.xm.xmnlp.demo</a>下，比文档覆盖了更多细节，强烈建议运行一遍。</p>
+
+<h4>
+<a id="如何使用" class="anchor" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>如何使用</h4>
+
+<ul>
+<li>
+<p>Demo</p>
+
+<pre><code>System.out.println(Xmnlp.segment("你好，欢迎使用xmnlp自然语言处理包！"));
+</code></pre>
+</li>
+</ul>
+
+<h2>
+<a id="支持结巴中文分词模式" class="anchor" href="#%E6%94%AF%E6%8C%81%E7%BB%93%E5%B7%B4%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D%E6%A8%A1%E5%BC%8F" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>支持结巴中文分词模式</h2>
+
+<ul>
+<li>Search模式，用于对用户查询词分词</li>
+<li>Index模式，用于对索引文档分词</li>
+</ul>
+
+<h4>
+<a id="特性" class="anchor" href="#%E7%89%B9%E6%80%A7" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>特性</h4>
+
+<ul>
+<li>支持多种分词模式</li>
+<li>全角统一转成半角</li>
+<li>用户词典功能</li>
+<li>resource 目录有整理的搜狗细胞词库和一个自定义词库，可加载多个用户词库</li>
+</ul>
+
+<h4>
+<a id="算法" class="anchor" href="#%E7%AE%97%E6%B3%95" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>算法</h4>
+
+<ul>
+<li>[ ] 基于 =trie= 树结构实现高效词图扫描</li>
+<li>[ ] 生成所有切词可能的有向无环图 =DAG=</li>
+<li>[ ] 采用动态规划算法计算最佳切词组合</li>
+<li>[ ] 基于 =HMM= 模型，采用 =Viterbi= (维特比)算法实现未登录词识别</li>
+</ul>
+
+<h2>
+<a id="许可证" class="anchor" href="#%E8%AE%B8%E5%8F%AF%E8%AF%81" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>许可证</h2>
+
+<p>许可证为ApacheLicence 2.0</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/shibing624/xmnlp">Xmnlp</a> is maintained by <a href="https://github.com/shibing624">shibing624</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
