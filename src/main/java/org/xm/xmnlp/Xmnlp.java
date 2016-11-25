@@ -27,7 +27,6 @@ import static org.xm.xmnlp.util.Predefine.logger;
 /**
  * Xmnlp : xuming nlp 自然语言处理工具包
  * 常用接口工具类
- * <p/>
  * Created by xuming on 2016/7/22.
  */
 public class Xmnlp {
@@ -61,6 +60,11 @@ public class Xmnlp {
          * 同义词词典路径
          */
         public static String CoreSynonymDictionaryDictionaryPath = "data/dictionary/synonym/CoreSynonym.txt";
+        /**
+         * 词频统计输出路径
+         */
+        public static String StatisticsPath = "data/result/Statistics.txt";
+
         /**
          * 人名词典路径
          */

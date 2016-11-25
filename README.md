@@ -2,7 +2,7 @@
 
 
 #### author：xuming(shibing624)
-#### environment：jdk 1.6
+#### environment：jdk 1.8
 
 
 1. add the rule chinese word segmentation: 2016.06.21
@@ -65,6 +65,8 @@
     - 结巴分词歧义性测试（效果不理想）
 13. add ansj segmentation. xuming 20160928
     - ansj中文分词器
+14. add word frequency statistics. xuming 20161125
+    - 分词结果词语统计
     
     
 ---
@@ -131,7 +133,7 @@
   	<dependency>
             <groupId>com.xm</groupId>
             <artifactId>xmnlp</artifactId>
-            <version>1.0.1</version>
+            <version>1.3</version>
     </dependency>
   	```
 

@@ -13,6 +13,7 @@ public class Term {
      * 词语
      */
     public String word;
+
     /**
      * 词性
      */
@@ -22,6 +23,33 @@ public class Term {
      * 在文本中的起始位置（需开启分词器的offset选项）
      */
     public int offset;
+
+    /**
+     * 长度
+     */
+    public int length() {
+        return word.length();
+    }
+
+    /**
+     * 获取本词语在词库中的频次
+     *
+     * @return 频次，0代表这是个OOV
+     */
+    public int getFrequency() {
+        return LexiconUtil.getFrequency(word);
+    }
+
+    /**
+     * 词性
+     */
+    public Nature getNature() {
+        return nature;
+    }
+
+    public void setNature(Nature nature) {
+        this.nature = nature;
+    }
 
     /**
      * 构造一个单词
@@ -40,31 +68,10 @@ public class Term {
             return word + "/" + getNature();
         return word;
     }
-
-    /**
-     * 长度
-     */
-    public int length() {
-        return word.length();
+    public String toString(String split) {
+        if (Xmnlp.Config.ShowTermNature)
+            return word + split + getNature();
+        return word;
     }
 
-    /**
-     * 获取本词语在HanLP词库中的频次
-     *
-     * @return 频次，0代表这是个OOV
-     */
-    public int getFrequency() {
-        return LexiconUtil.getFrequency(word);
-    }
-
-    /**
-     * 词性
-     */
-    public Nature getNature() {
-        return nature;
-    }
-
-    public void setNature(Nature nature) {
-        this.nature = nature;
-    }
 }

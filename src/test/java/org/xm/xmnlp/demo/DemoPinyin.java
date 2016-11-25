@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class DemoPinyin {
     public static void main(String[] args) {
-        String text = "重载不是重任！教授，教师";
+        String text = "重载不是重任！教授 教师 胳臂 划船 计划";
         List<Pinyin> pinyinList = Xmnlp.convertToPinyinList(text);
         System.out.print("原文:");
         for (char c : text.toCharArray()) {
