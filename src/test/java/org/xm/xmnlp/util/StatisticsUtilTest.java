@@ -23,7 +23,7 @@ public class StatisticsUtilTest {
     @Test
     public void seg() throws Exception {
         //开始分词
-        statisticsUtil.seg("数据建模和算法才是基础吧，写代码不算什么，明天有关于分子和原子的课程，下雨了也要去听课");
+        statisticsUtil.seg("数据建模和算法才是基础吧，写代码不算什么。下雨天，明天有关于分子和原子的课程，下雨了也要去听课");
         //输出词频统计结果
         statisticsUtil.dump();
     }
