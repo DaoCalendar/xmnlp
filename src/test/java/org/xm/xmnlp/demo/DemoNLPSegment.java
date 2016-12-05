@@ -13,7 +13,7 @@ import java.util.List;
 public class DemoNLPSegment {
     public static void main(String[] args) {
         Xmnlp.Config.enableDebug();
-        List<Term> termList = NLPTokenizer.segment("上外日本文化经济学院的陆晚霞教授正在教授泛读课程，这个研究生会五种语言，目标是普及自然语言处理在生产环境中的应用。");
+        List<Term> termList = NLPTokenizer.segment("上外日本文化经济学院的陆晚霞教授正在教授泛读课程，这个研究生会五种语言");
         System.out.println(termList);
     }
 }

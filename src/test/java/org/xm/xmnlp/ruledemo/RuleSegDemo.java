@@ -17,7 +17,6 @@ public class RuleSegDemo {
     }
 
     public void testRuleSeg() {
-        Rule rule = new Rule();
         String[] bugs =
                 new String[]{
                         "北京天安门广场人民币种",

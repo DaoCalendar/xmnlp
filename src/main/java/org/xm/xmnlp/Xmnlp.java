@@ -27,7 +27,7 @@ import static org.xm.xmnlp.util.Predefine.logger;
 /**
  * Xmnlp : xuming nlp 自然语言处理工具包
  * 常用接口工具类
- * Created by xuming on 2016/7/22.
+ * Created by xuming
  */
 public class Xmnlp {
     public static final class Config {
