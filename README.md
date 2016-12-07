@@ -252,7 +252,11 @@
 	  time elapsed:20122, rate:3058.491639kb/s, words:1128118.44/s
 	```
 
-
+## 鸣谢
+  HanLP 项目
+  ansj_seg 项目
+  jieba 项目
+  word 项目
 
 ## 许可证
   许可证为ApacheLicence 2.0
