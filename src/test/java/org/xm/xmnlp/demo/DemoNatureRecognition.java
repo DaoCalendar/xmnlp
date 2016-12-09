@@ -9,7 +9,7 @@ import org.xm.xmnlp.seg.Segment;
  */
 public class DemoNatureRecognition {
     public static void main(String[] args) {
-        String text = "教授正在教授自然语言处理课程About集团开启了新时代";
+        String text = "教授正在教授自然语言处理课程,学生敬仰他，表示对他的敬仰.北京的长安街有一辆北京汽车";
         Segment segment = Xmnlp.newSegment();
 
         System.out.println("未标注：" + segment.seg(text));
