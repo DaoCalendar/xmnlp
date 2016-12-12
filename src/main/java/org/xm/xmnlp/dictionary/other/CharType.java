@@ -48,7 +48,7 @@ public class CharType {
 
     static {
         type = new byte[65536];
-        System.out.println("字符类型对应表开始加载 " + Xmnlp.Config.CharTypePath);
+//        System.out.println("字符类型对应表开始加载 " + Xmnlp.Config.CharTypePath);
         long start = System.currentTimeMillis();
         ByteArray byteArray = ByteArray.createByteArray(Xmnlp.Config.CharTypePath);
         if (byteArray == null) {
@@ -63,7 +63,7 @@ public class CharType {
                     type[i] = t;
                 }
             }
-            System.out.println("字符类型对应表加载成功，耗时" + (System.currentTimeMillis() - start) + " ms");
+//            System.out.println("字符类型对应表加载成功，耗时" + (System.currentTimeMillis() - start) + " ms");
         }
     }
 

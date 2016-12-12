@@ -30,7 +30,7 @@ public class TestParse extends TestCase {
     }
 
     public void testSegAndParse() throws Exception {
-        System.out.println(MaxEntDependencyParser.compute("我喜欢陈膺奥"));
+        System.out.println(MaxEntDependencyParser.compute("我喜欢刘膺奥"));
     }
 
     public void testMaxEntParser() throws Exception {

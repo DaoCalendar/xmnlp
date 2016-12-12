@@ -75,6 +75,28 @@ public class Recommend implements IRecommend {
         return resultList;
     }
 
+    public Map<String,Double> getRecommendScore(String key,int size) {
+        Map<String,Double> result = new HashMap<String,Double>(size);
+        TreeMap<String, Double> scoreMap = new TreeMap<String, Double>();
+        for (BaseScorer scorer : scorerList) {
+            Map<String, Double> map = scorer.computeScore(key);
+            Double max = max(map);// 正规化一个map
+            for (Map.Entry<String, Double> entry : map.entrySet()) {
+                Double score = scoreMap.get(entry.getKey());
+                if (score == null) score = 0.0;
+                scoreMap.put(entry.getKey(), score / max + entry.getValue() * scorer.boost);
+            }
+        }
+        for (Map.Entry<Double, Set<String>> entry : sortScoreMap(scoreMap).entrySet()) {
+            for (String sentence : entry.getValue()) {
+                if (result.size() >= size) return result;
+                result.put(sentence,entry.getKey());
+            }
+        }
+
+        return result;
+    }
+
     /**
      * 将分数map排序折叠
      *

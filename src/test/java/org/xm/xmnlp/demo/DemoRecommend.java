@@ -3,6 +3,8 @@ package org.xm.xmnlp.demo;
 
 import org.xm.xmnlp.recommend.Recommend;
 
+import java.util.Map;
+
 /**
  * 文本推荐(句子级别，从一系列句子中挑出与输入句子最相似的那一个)
  */
@@ -27,5 +29,8 @@ public class DemoRecommend {
         System.out.println(rec.recommend("mayun", 1));      // 拼音
         System.out.println(rec.recommend("徐家汇", 1));     // 拼音
         System.out.println(rec.recommend("殿下", 1));       // 语义
+
+        Map<String, Double> map = rec.getRecommendScore("chenshu", 3);
+        map.forEach((i, j) -> System.out.println(i + j));
     }
 }
