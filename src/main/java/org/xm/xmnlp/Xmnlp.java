@@ -9,6 +9,7 @@ import org.xm.xmnlp.dictionary.traditionalsimplified.TraditionalChineseDictionar
 import org.xm.xmnlp.seg.Segment;
 import org.xm.xmnlp.seg.ViterbiSegment;
 import org.xm.xmnlp.seg.domain.Term;
+import org.xm.xmnlp.summary.OrganizationExtractor;
 import org.xm.xmnlp.summary.PhraseExtractor;
 import org.xm.xmnlp.summary.TextRankKeyword;
 import org.xm.xmnlp.summary.TextRankSentence;
@@ -378,6 +379,9 @@ public class Xmnlp {
         return PhraseExtractor.getPhraseList(text, size);
     }
 
+    public static List<String> extractOrganization(String text){
+        return OrganizationExtractor.getOrganizationList(text);
+    }
     /**
      * 自动摘要
      *

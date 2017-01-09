@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class Servlet {
     private enum MethodEnum {
-        BASE, NLP, INDEX, CRF, HMM, NSHORT, PINYIN, TRADITIONALCHINESE,SIMPLECHINESE, KEYWORD, SUMMARY
+        BASE, NLP, INDEX, CRF, HMM, NSHORT, PINYIN, TRADITIONALCHINESE, SIMPLECHINESE, KEYWORD, SUMMARY, ORGANIZATION
     }
 
     public static String processRequest(String input, String methodStr, String natureStr) throws Exception {
@@ -50,7 +50,7 @@ public class Servlet {
                 break;
             case HMM:
                 List<Term> hmmTerms = new HMMSegment().seg(input);
-                return  hmmTerms.toString();
+                return hmmTerms.toString();
             case NSHORT:
                 terms = new NShortSegment().seg(input);
                 break;
@@ -70,7 +70,10 @@ public class Servlet {
             case SUMMARY:
                 List<String> sentenceList = Xmnlp.extractSummary(input, 5);
                 return sentenceList.toString();
-                //return "<html>"+new TagContent("<font color=\"red\">", "</font>").tagContent(summary)+"...</html>" ;
+            //return "<html>"+new TagContent("<font color=\"red\">", "</font>").tagContent(summary)+"...</html>" ;
+            case ORGANIZATION:
+                List<String> list = Xmnlp.extractOrganization(input);
+                return list.toString();
             default:
                 terms = StandardTokenizer.segment(input);
         }
@@ -94,6 +97,7 @@ public class Servlet {
 
     /**
      * 拼音 显示
+     *
      * @param pinyinList
      * @return
      */
@@ -103,7 +107,7 @@ public class Servlet {
         }
         StringBuilder sb = new StringBuilder();
         for (Pinyin pinyin : pinyinList) {
-            sb.append(pinyin.getPinyinWithToneMark());
+            sb.append(pinyin.getPinyinWithoutTone());
             sb.append(",");
         }
         return sb.toString();

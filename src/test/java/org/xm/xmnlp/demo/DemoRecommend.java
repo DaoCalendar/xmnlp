@@ -24,13 +24,13 @@ public class DemoRecommend {
             rec.addSentence(title);
         }
 
-        System.out.println(rec.recommend("陈述", 2));       // 语义
+        System.out.println(rec.recommend("陈述", 1));       // 语义
         System.out.println(rec.recommend("危机公关", 1));   // 字符
         System.out.println(rec.recommend("mayun", 1));      // 拼音
         System.out.println(rec.recommend("徐家汇", 1));     // 拼音
         System.out.println(rec.recommend("殿下", 1));       // 语义
 
-        Map<String, Double> map = rec.getRecommendScore("chenshu", 3);
+        Map<String, Double> map = rec.getRecommendScore("chenshu", 2);// 拼音
         map.forEach((i, j) -> System.out.println(i + j));
     }
 }

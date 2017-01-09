@@ -19,7 +19,6 @@ import static org.xm.xmnlp.util.Predefine.logger;
 
 /**
  * http 服务类
- * <p/>
  * Created by xuming on 2016/8/1.
  */
 public class Server {
@@ -33,7 +32,8 @@ public class Server {
         httpServer.createContext("/", new MHttpHandler());
         httpServer.setExecutor(null);
         httpServer.start();
-        System.out.println("server started");
+        System.out.println("server started!");
+        System.out.println("open:　http://localhost:8888/page/index.html");
 
     }
 
@@ -62,7 +62,7 @@ public class Server {
                 try {
                     writeToClient(httpExchange, e.getMessage());
                 } catch (IOException e1) {
-                    System.out.println("eee");
+                    System.out.println("error:"+e1);
                 }
             } finally {
                 httpExchange.close();
@@ -130,9 +130,9 @@ public class Server {
             String split[] = query.split("\\?");
             query = split[split.length - 1];
             split = query.split("&");
-            String[] param ;
-            String key ;
-            String value ;
+            String[] param;
+            String key;
+            String value;
             for (String kv : split) {
                 try {
                     param = kv.split("=");

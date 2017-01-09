@@ -123,6 +123,9 @@
                         /*$("#form1").attr("action", "../?method=recommend");
                          $("#form1").attr("target", "RECOMMEND");
                          $("#form1").submit();*/
+                        $("#form1").attr("action", "../?method=organization");
+                        $("#form1").attr("target", "ORGANIZATION");
+                        $("#form1").submit();
                     });
 
                 });
@@ -144,7 +147,10 @@
                     class="icon-bar"></span> <span class="icon-bar"></span> <span
                     class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">NLP工具-xmnlp</a>
+            <a class="navbar-brand" href="#">NLP工具包-xmnlp</a>
+            <span>         </span>
+            <span>         </span>
+            <a class="navbar-brand" href="#">author: xuming</a>
         </div>
     </div>
 </div>
@@ -161,8 +167,8 @@
                 <span>xmnlp演示</span>
             </div>
             <div class="input-chunk chunk">
-                <textarea id="txt-analysis" class="input" name="input">演示：爱国是信任人民，不是信任某个政体或制度，重载不是重任。匡扶正义？你這是繁體字，沒簡體。15日，备受关注的电影《黄金时代》在北京举行了电影发布会，导演许鞍华和编剧李樯及汤唯、冯绍峰等众星悉数亮相。悉，电影确定将于10月1日公映。</textarea>
-                <input type="button" id="segButton" class="btn btn-arrow btn-radius" value="咻咻咻"/>
+                <textarea id="txt-analysis" class="input" name="input">演示：爱国是信任人民，不是信任某个政体或制度，重载不是重任。匡扶正义？你這是繁體字，沒簡體。15日，备受关注的电影《黄金时代》在北京电影学院举行了电影发布会，邀请了中国传媒大学的同仁参加，导演许鞍华和编剧李樯及汤唯、冯绍峰等众星悉数亮相。悉，电影确定将于10月1日在深圳百大华有限公司公映。</textarea>
+                <input type="button" id="segButton" class="btn btn-arrow btn-radius" value=" 咻咻咻"/>
 
                 <div class="warn-msg hide">
                     <span class="txt">目前仅支持GBK字符集。分析结果已过滤暂不支持的语言或字符。</span>
@@ -251,6 +257,15 @@
                             </div>
                             <div class="line"></div>
                         </li>-->
+                        <li class=" organization">
+                            <a class="hide" href="#overview-organization"></a>
+
+                            <div class="arrow"></div>
+                            <div class="title">
+                                <a href="#overview-organization"><span class="icon"></span>机构名称提取</a>
+                            </div>
+                            <div class="line"></div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -303,6 +318,10 @@
                     <div class="title">语义联想(文本推荐):</div>
                     <iframe name="RECOMMEND" style="width: 100%"></iframe>
                 </div>-->
+                <div id="overview-organization" class="chunk">
+                    <div class="title">机构名称提取:</div>
+                    <iframe name="ORGANIZATION" style="width: 100%"></iframe>
+                </div>
             </div>
         </div>
 

@@ -5,7 +5,9 @@ import org.xm.xmnlp.Xmnlp;
 import org.xm.xmnlp.seg.Segment;
 import org.xm.xmnlp.seg.domain.Term;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 机构名识别
@@ -24,5 +26,15 @@ public class DemoOrganizationRecognition {
             List<Term> termList = segment.seg(sentence);
             System.out.println(termList);
         }
+
+        List<String> result = new ArrayList<>();
+        for (String sentence : testCase) {
+            List<Term> termList = segment.seg(sentence);
+            result.addAll(termList.stream().filter(i -> i.getNature().startsWith("nt")).map(i -> i.word).collect(Collectors.toList()));
+            result.forEach(System.out::println);
+        }
+
+        String str = "我在上海辉煌有限公司兼职工作";
+        System.out.println(Xmnlp.extractOrganization(str));
     }
 }
