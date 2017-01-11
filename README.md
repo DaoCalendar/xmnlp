@@ -67,6 +67,10 @@
     - ansj中文分词器
 14. add word frequency statistics. xuming 20161125
     - 分词结果词语统计
+15. add organization recognize. xuming 20170110
+    - 添加机构名称提取WEB页面功能
+16. add person name extract in web demo. xuming 20170111
+    - 添加人名提取WEB页面功能并在WEB页面注释CRF分词功能
     
     
 ---

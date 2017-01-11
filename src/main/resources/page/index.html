@@ -88,9 +88,9 @@
                         $("#form1").attr("target", "NLP");
                         $("#form1").submit();
 
-                        $("#form1").attr("action", "../?method=crf");
+                        /*$("#form1").attr("action", "../?method=crf");
                         $("#form1").attr("target", "CRF");
-                        $("#form1").submit();
+                        $("#form1").submit();*/
 
                         /*$("#form1").attr("action", "../?method=hmm");
                          $("#form1").attr("target", "HMM");
@@ -123,8 +123,13 @@
                         /*$("#form1").attr("action", "../?method=recommend");
                          $("#form1").attr("target", "RECOMMEND");
                          $("#form1").submit();*/
+
                         $("#form1").attr("action", "../?method=organization");
                         $("#form1").attr("target", "ORGANIZATION");
+                        $("#form1").submit();
+
+                        $("#form1").attr("action", "../?method=personname");
+                        $("#form1").attr("target", "PERSONNAME");
                         $("#form1").submit();
                     });
 
@@ -167,7 +172,7 @@
                 <span>xmnlp演示</span>
             </div>
             <div class="input-chunk chunk">
-                <textarea id="txt-analysis" class="input" name="input">演示：爱国是信任人民，不是信任某个政体或制度，重载不是重任。匡扶正义？你這是繁體字，沒簡體。15日，备受关注的电影《黄金时代》在北京电影学院举行了电影发布会，邀请了中国传媒大学的同仁参加，导演许鞍华和编剧李樯及汤唯、冯绍峰等众星悉数亮相。悉，电影确定将于10月1日在深圳百大华有限公司公映。</textarea>
+                <textarea id="txt-analysis" class="input" name="input">演示：爱国是信任人民，不是信任某个政体或制度，重载不是重任。匡扶正义？你這是繁體字，沒簡體。15日，备受关注的电影《黄金时代》在北京电影学院举行了电影发布会，邀请了中国传媒大学的同仁参加，导演许鞍华和编剧李樯和演员汤唯、冯绍峰等众星悉数亮相。悉，电影确定将于10月1日在深圳百大华有限公司公映。</textarea>
                 <input type="button" id="segButton" class="btn btn-arrow btn-radius" value=" 咻咻咻"/>
 
                 <div class="warn-msg hide">
@@ -210,7 +215,7 @@
                             </div>
                             <div class="line"></div>
                         </li>
-                        <li class=" info">
+                        <!--<li class=" info">
                             <a class="hide" href="#overview-crf"></a>
 
                             <div class="arrow"></div>
@@ -218,7 +223,7 @@
                                 <a href="#overview-crf"><span class="icon"></span>CRF分词</a>
                             </div>
                             <div class="line"></div>
-                        </li>
+                        </li>-->
 
                         <li class=" emotion">
                             <a class="hide" href="#overview-pinyin"></a>
@@ -266,6 +271,16 @@
                             </div>
                             <div class="line"></div>
                         </li>
+
+                        <li class=" personname">
+                            <a class="hide" href="#overview-personname"></a>
+
+                            <div class="arrow"></div>
+                            <div class="title">
+                                <a href="#overview-personname"><span class="icon"></span>人名提取</a>
+                            </div>
+                            <div class="line"></div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -294,10 +309,10 @@
                     <div class="title">NLP分词:</div>
                     <iframe name="NLP" style="width: 100%"></iframe>
                 </div>
-                <div id="overview-crf" class="chunk">
+                <!--<div id="overview-crf" class="chunk">
                     <div class="title">CRF分词:</div>
                     <iframe name="CRF" style="width: 100%"></iframe>
-                </div>
+                </div>-->
 
                 <div id="overview-pinyin" class="chunk">
                     <div class="title">拼音标注:</div>
@@ -321,6 +336,10 @@
                 <div id="overview-organization" class="chunk">
                     <div class="title">机构名称提取:</div>
                     <iframe name="ORGANIZATION" style="width: 100%"></iframe>
+                </div>
+                <div id="overview-personname" class="chunk">
+                    <div class="title">人名提取:</div>
+                    <iframe name="PERSONNAME" style="width: 100%"></iframe>
                 </div>
             </div>
         </div>

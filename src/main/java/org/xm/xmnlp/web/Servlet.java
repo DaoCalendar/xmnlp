@@ -2,16 +2,17 @@ package org.xm.xmnlp.web;
 
 import org.xm.xmnlp.Xmnlp;
 import org.xm.xmnlp.dictionary.pinyin.Pinyin;
-import org.xm.xmnlp.seg.CRFSegment;
-import org.xm.xmnlp.seg.HMMSegment;
 import org.xm.xmnlp.seg.NShortSegment;
+import org.xm.xmnlp.seg.Segment;
 import org.xm.xmnlp.seg.domain.Term;
 import org.xm.xmnlp.tokenizer.IndexTokenizer;
 import org.xm.xmnlp.tokenizer.NLPTokenizer;
 import org.xm.xmnlp.tokenizer.StandardTokenizer;
 import org.xm.xmnlp.tokenizer.TraditionalChineseTokenizer;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 服务程序容器
@@ -19,7 +20,7 @@ import java.util.List;
  */
 public class Servlet {
     private enum MethodEnum {
-        BASE, NLP, INDEX, CRF, HMM, NSHORT, PINYIN, TRADITIONALCHINESE, SIMPLECHINESE, KEYWORD, SUMMARY, ORGANIZATION
+        BASE, NLP, INDEX, CRF, HMM, NSHORT, PINYIN, TRADITIONALCHINESE, SIMPLECHINESE, KEYWORD, SUMMARY, ORGANIZATION,PERSONNAME
     }
 
     public static String processRequest(String input, String methodStr, String natureStr) throws Exception {
@@ -45,12 +46,12 @@ public class Servlet {
             case INDEX:
                 terms = IndexTokenizer.segment(input);
                 break;
-            case CRF:
+            /*case CRF:
                 terms = new CRFSegment().seg(input);
                 break;
             case HMM:
                 List<Term> hmmTerms = new HMMSegment().seg(input);
-                return hmmTerms.toString();
+                return hmmTerms.toString();*/
             case NSHORT:
                 terms = new NShortSegment().seg(input);
                 break;
@@ -74,6 +75,13 @@ public class Servlet {
             case ORGANIZATION:
                 List<String> list = Xmnlp.extractOrganization(input);
                 return list.toString();
+            case PERSONNAME:
+                Segment segment = Xmnlp.newSegment().enableNameRecognize(true).enableJapaneseNameRecognize(true);
+                // 新增的开启自定义词库功能可用，简单的日本名称通过名称词库也可以识别，但复杂的日本名称（eg：龟山千广）就需要开启日本名识别才能识别出来。
+                List<Term> termList = segment.seg(input);
+                List<String> result = new ArrayList<>();
+                result.addAll(termList.stream().filter(i -> i.getNature().startsWith("nr")).map(i -> i.word).collect(Collectors.toList()));
+                return result.toString();
             default:
                 terms = StandardTokenizer.segment(input);
         }

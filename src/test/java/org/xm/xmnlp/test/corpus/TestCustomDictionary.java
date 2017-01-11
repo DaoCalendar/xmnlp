@@ -30,7 +30,7 @@ public class TestCustomDictionary extends TestCase {
      * @throws Exception
      */
     public void testRemoveShortWord() throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("data/dictionary/CustomDictionary.txt")));
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("data/dictionary/custom/CustomDictionary.txt")));
         String line;
         Set<String> fixedDictionary = new TreeSet<String>();
         while ((line = br.readLine()) != null) {
@@ -39,12 +39,7 @@ public class TestCustomDictionary extends TestCase {
             fixedDictionary.add(line);
         }
         br.close();
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("data/dictionary/CustomDictionary.txt")));
-        for (String word : fixedDictionary) {
-            bw.write(word);
-            bw.newLine();
-        }
-        bw.close();
+        System.out.println(fixedDictionary.size()+"");
     }
 
     /**
@@ -53,7 +48,7 @@ public class TestCustomDictionary extends TestCase {
      * @throws Exception
      */
     public void testRemoveNR() throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("data/dictionary/CustomDictionary.txt")));
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("data/dictionary/custom/CustomDictionary.txt")));
         String line;
         Set<String> fixedDictionary = new TreeSet<String>();
         while ((line = br.readLine()) != null) {
@@ -62,16 +57,11 @@ public class TestCustomDictionary extends TestCase {
             fixedDictionary.add(line);
         }
         br.close();
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("data/dictionary/CustomDictionary.txt")));
-        for (String word : fixedDictionary) {
-            bw.write(word);
-            bw.newLine();
-        }
-        bw.close();
+        System.out.println(fixedDictionary.size()+"");
     }
 
     public void testNext() throws Exception {
-        BaseSearcher searcher = CustomDictionary.getSearcher("都要亲口");
+        BaseSearcher searcher = CustomDictionary.getSearcher("上");
         Map.Entry<String, CoreDictionary.Attribute> entry;
         while ((entry = searcher.next()) != null) {
             int offset = searcher.getOffset();

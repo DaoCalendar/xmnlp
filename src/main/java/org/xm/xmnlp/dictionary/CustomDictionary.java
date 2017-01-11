@@ -117,7 +117,8 @@ public class CustomDictionary {
      * @param customNatureCollector
      * @return
      */
-    public static boolean load(String path, Nature defaultNature, TreeMap<String, CoreDictionary.Attribute> map, LinkedHashSet<Nature> customNatureCollector) {
+    public static boolean load(String path, Nature defaultNature, TreeMap<String, CoreDictionary.Attribute> map,
+                               LinkedHashSet<Nature> customNatureCollector) {
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path), "UTF-8"));
             String line;

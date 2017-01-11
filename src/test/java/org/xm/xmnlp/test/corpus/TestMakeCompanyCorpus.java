@@ -86,6 +86,7 @@ public class TestMakeCompanyCorpus extends TestCase {
     }
 
     public void testCombine() throws Exception {
-        DictionaryMaker.combine("data/dictionary/organization/nt.txt", "data/dictionary/organization/outerNT.txt").saveTxtTo("data/dictionary/organization/nt.txt");
+        DictionaryMaker.combine("data/dictionary/organization/nt.txt", "data/dictionary/organization/outerNT.txt")
+                .saveTxtTo("data/dictionary/organization/nt.txt");
     }
 }
