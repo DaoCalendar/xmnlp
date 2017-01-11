@@ -131,25 +131,14 @@
 
 
 ## 如何获取
-  - 方式一：当前稳定版本
-
-    ```
-  	<dependency>
-            <groupId>com.xm</groupId>
-            <artifactId>xmnlp</artifactId>
-            <version>1.3</version>
-    </dependency>
-  	```
-
-    零配置，即可使用基本功能（除CRF分词、依存句法分析外的全部功能）。如果用户有自定义的需求，可以参考方式二，使用xmnlp.properties进行配置。
-
-  - 方式二：下载jar、data、xmnlp.properties
+  
+  - 方式一：下载源码、data
 
   	数据与程序分离，给予用户自定义的自由。
 
-  	1、下载jar
+  	1、下载代码
 
-  	  xmnlp.jar
+  	  直接fork该项目，在git上clone到本地'https://github.com/shibing624/xmnlp.git' 或者下载源码xmnlp-master.zip
 
   	2、下载data
 
@@ -187,6 +176,19 @@
 	  最后将xmnlp.properties放入classpath即可，对于任何项目，都可以放到src或resources目录下，编译时IDE会自动将其复制到classpath中。
 
 	  如果放置不当，xmnlp会智能提示当前环境下的合适路径，并且尝试从项目根目录读取数据集。
+
+- 方式二：当前稳定版本（暂未使用）
+
+    ```
+  	<dependency>
+            <groupId>com.xm</groupId>
+            <artifactId>xmnlp</artifactId>
+            <version>1.3</version>
+    </dependency>
+  	```
+
+    零配置，即可使用基本功能（除CRF分词、依存句法分析外的全部功能）。如果用户有自定义的需求，可以参考方式二，使用xmnlp.properties进行配置。
+
 
 ## 调用方法
 
@@ -257,10 +259,10 @@
 	```
 
 ## 鸣谢
-  HanLP 项目
-  ansj_seg 项目
-  jieba 项目
-  word 项目
+  - HanLP 项目 
+  - ansj_seg 项目 
+  - jieba 项目 
+  - word 项目 
 
 ## 许可证
   许可证为ApacheLicence 2.0
