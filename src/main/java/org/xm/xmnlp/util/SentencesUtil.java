@@ -22,16 +22,12 @@ public class SentencesUtil {
     }
 
     public static List<String> toSentenceList(char[] chars) {
-
         StringBuilder sb = new StringBuilder();
-
         List<String> sentences = new LinkedList<String>();
-
         for (int i = 0; i < chars.length; ++i) {
             if (sb.length() == 0 && (Character.isWhitespace(chars[i]) || chars[i] == ' ')) {
                 continue;
             }
-
             sb.append(chars[i]);
             switch (chars[i]) {
                 case '.':

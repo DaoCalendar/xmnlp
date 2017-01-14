@@ -20,7 +20,7 @@
       <Pattern>%d [%t] %-5p [%c] - %m%n</Pattern>
     </layout>
   </appender>
-  <root level="DEBUG">
+  <root level="INFO">
     <appender-ref ref="logfile"/>
     <appender-ref ref="stdout"/>
   </root>
