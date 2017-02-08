@@ -12,7 +12,6 @@ import java.util.Map;
 
 /**
  * 演示用户词典的动态增删
- *
  */
 public class DemoCustomDictionary {
     public static void main(String[] args) {
@@ -50,7 +49,7 @@ public class DemoCustomDictionary {
 
         AhoCorasickDoubleArrayTrieSegment acseg = new AhoCorasickDoubleArrayTrieSegment().loadDictionary(Xmnlp.Config.CoreDictionaryPath);
         // AC分词
-        System.out.println("AC分词:"+acseg.seg(text).toString());
+        System.out.println("AC分词:" + acseg.seg(text).toString());
         // 标准分词
         System.out.println(Xmnlp.segment(text));
 
