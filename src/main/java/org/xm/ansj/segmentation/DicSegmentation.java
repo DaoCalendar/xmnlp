@@ -36,8 +36,6 @@ public class DicSegmentation extends Segmentation {
                     new AsianPersonRecognition().recognition(graph.terms);
                     graph.walkPathByScore();
                     NameFix.nameAmbiguity(graph.terms);
-//                    new ForeignPersonRecognition().recognition(graph.terms);
-//                    graph.walkPathByScore();
                 }
                 return getResult();
             }
