@@ -9,7 +9,8 @@ import java.util.List;
 /**
  * 快速分词
  * 基于Double Array Trie实现的词典分词，适用于“高吞吐量”“精度一般”的场合
- * Created by mingzai on 2016/7/30.
+ *
+ * @author xuming
  */
 public class SpeedTokenizer {
     public static final Segment SEGMENT = new DoubleArrayTrieSegment();
