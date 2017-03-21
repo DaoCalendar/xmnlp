@@ -379,9 +379,10 @@ public class Xmnlp {
         return PhraseExtractor.getPhraseList(text, size);
     }
 
-    public static List<String> extractOrganization(String text){
+    public static List<String> extractOrganization(String text) {
         return OrganizationExtractor.getOrganizationList(text);
     }
+
     /**
      * 自动摘要
      *
