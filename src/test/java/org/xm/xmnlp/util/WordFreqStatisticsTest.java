@@ -13,25 +13,30 @@
 package org.xm.xmnlp.util;
 
 import org.junit.Test;
+import org.xm.xmnlp.tokenizer.NLPTokenizer;
 
 /**
  * @author xuming
  */
-public class StatisticsUtilTest {
-    //词频统计设置
-    StatisticsUtil statisticsUtil = new StatisticsUtil();
+public class WordFreqStatisticsTest {
+
+    //词频统计
+    WordFreqStatistics statistic = new WordFreqStatistics(NLPTokenizer.SEGMENT);
     @Test
     public void seg() throws Exception {
         //开始分词
-        statisticsUtil.seg("数据建模和算法才是基础吧，写代码不算什么。下雨天，明天有关于分子和原子的课程，下雨了也要去听课");
+        statistic.seg("数据建模和算法是自然语言处理课的基础吧，写代码不算什么。下雨天，明天有关于分子和原子的课程，" +
+                "下雨了也要去听自然语言处理课");
         //输出词频统计结果
-        statisticsUtil.dump();
+        System.out.println(statistic.getStatisticsMap());
+        //输出词频统计结果
+        statistic.dump();
     }
 
     @Test
     public void clear() throws Exception {
-        statisticsUtil.reset();
+        statistic.reset();
         //输出词频统计结果
-        System.out.println(statisticsUtil.getStatisticsMap());
+        System.out.println(statistic.getStatisticsMap());
     }
 }

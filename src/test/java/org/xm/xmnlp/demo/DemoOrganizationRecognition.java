@@ -15,11 +15,11 @@ import java.util.stream.Collectors;
 public class DemoOrganizationRecognition {
     public static void main(String[] args) {
         String[] testCase = new String[]{
-                "我在上海辉煌有限公司兼职工作，",
+                "我在上海百度有限公司兼职工作，",
                 "我经常在台川喜宴餐厅吃饭，",
                 "偶尔去开元地中海影城看电影。",
         };
-        System.out.println("未开启机构名识别的效果："+Xmnlp.segment("我在上海辉煌有限公司兼职工作，我经常在台川喜宴餐厅吃饭，"));
+        System.out.println("未开启机构名识别的效果：" + Xmnlp.segment("我在上海百度有限公司兼职工作，我经常在台川喜宴餐厅吃饭，"));
 
         Segment segment = Xmnlp.newSegment().enableOrganizationRecognize(true);
         for (String sentence : testCase) {
@@ -34,7 +34,7 @@ public class DemoOrganizationRecognition {
             result.forEach(System.out::println);
         }
 
-        String str = "我在上海辉煌有限公司兼职工作";
+        String str = "我在上海百度有限公司兼职工作";
         System.out.println(Xmnlp.extractOrganization(str));
     }
 }
