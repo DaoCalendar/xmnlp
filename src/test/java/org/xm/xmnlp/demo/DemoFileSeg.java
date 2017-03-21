@@ -23,7 +23,7 @@ public class DemoFileSeg {
 
 
     public static void main(String[] args) throws IOException {
-        String filePath = "data/statistic/corpus-bajin-1942-novel.txt";
+        String filePath = "data/test/corpus-bajin-1942-novel.txt";
         statistics(filePath);
 
         BufferedReader reader = IOUtil.getReader(filePath, "utf-8");

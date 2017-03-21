@@ -64,7 +64,7 @@ public class Xmnlp {
         /**
          * 词频统计输出路径
          */
-        public static String StatisticsResultPath = "data/statistic/WordFrequencyStatistics-Result.txt";
+        public static String StatisticsResultPath = "data/result/WordFrequencyStatistics-Result.txt";
 
         /**
          * 人名词典路径
