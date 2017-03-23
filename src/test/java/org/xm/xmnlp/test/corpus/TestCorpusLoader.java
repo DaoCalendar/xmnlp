@@ -35,7 +35,7 @@ public class TestCorpusLoader extends TestCase {
 
     public void testCombineToTxt() throws Exception {
         final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("D:\\Doc\\语料库\\2014_cn.txt"), "UTF-8"));
-        CorpusLoader.walk("D:\\Doc\\语料库\\2014_hankcs", new CorpusLoader.Handler() {
+        CorpusLoader.walk("D:\\Doc\\语料库\\2014", new CorpusLoader.Handler() {
             @Override
             public void handle(Document document) {
                 try {

@@ -12,7 +12,9 @@ import java.util.List;
 
 public class TestLDA extends TestCase {
     public void testSegmentCorpus() throws Exception {
-        File root = new File("D:\\Doc\\语料库\\搜狗文本分类语料库精简版");
+        String fileFolderPath = "data/test";
+        long start = System.currentTimeMillis();
+        File root = new File(fileFolderPath);
         for (File folder : root.listFiles()) {
             if (folder.isDirectory()) {
                 for (File file : folder.listFiles()) {
@@ -24,9 +26,32 @@ public class TestLDA extends TestCase {
                             sbOut.append(term.word).append(" ");
                         }
                     }
-                    IOUtil.saveTxt("D:\\Doc\\语料库\\segmented\\" + folder.getName() + "_" + file.getName(), sbOut.toString());
+                    IOUtil.saveTxt("data\\" + folder.getName() + "_segment_" + file.getName(), sbOut.toString());
                 }
             }
         }
+        long end = System.currentTimeMillis();
+        System.out.println("共用时:" + (end - start) + "ms");
+    }
+
+    public void testSummaryCorpus() throws Exception {
+        String fileFolderPath = "data/test";
+        long start = System.currentTimeMillis();
+        File root = new File(fileFolderPath);
+        for (File folder : root.listFiles()) {
+            if (folder.isDirectory()) {
+                for (File file : folder.listFiles()) {
+                    System.out.println(file.getAbsolutePath());
+                    List<String> sentenceList = Xmnlp.extractSummary(IOUtil.readTxt(file.getAbsolutePath()), 3);
+                    StringBuilder sbOut = new StringBuilder();
+                    for (String term : sentenceList) {
+                        sbOut.append(term).append("\n");
+                    }
+                    IOUtil.saveTxt("data\\" + folder.getName() + "_summary_" + file.getName(), sbOut.toString());
+                }
+            }
+        }
+        long end = System.currentTimeMillis();
+        System.out.println("共用时:" + (end - start) + "ms");
     }
 }

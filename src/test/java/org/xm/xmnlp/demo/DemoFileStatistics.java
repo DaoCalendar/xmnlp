@@ -1,9 +1,9 @@
 package org.xm.xmnlp.demo;
 
-import org.nlpcn.commons.lang.util.IOUtil;
 import org.xm.xmnlp.Xmnlp;
 import org.xm.xmnlp.seg.Segment;
 import org.xm.xmnlp.seg.domain.Term;
+import org.xm.xmnlp.util.IOUtil;
 import org.xm.xmnlp.util.WordFreqStatistics;
 
 import java.io.BufferedReader;
@@ -13,11 +13,11 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * 对文件分词处理
+ * 对文件分词并统计
  *
  * @author xuming
  */
-public class DemoFileSeg {
+public class DemoFileStatistics {
     public static final Segment SEGMENT = Xmnlp.newSegment().enableNameRecognize(true)
             .enablePlaceRecognize(true).enablePartOfSpeechTagging(true).enableMultithreading(4);
 

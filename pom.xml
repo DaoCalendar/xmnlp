@@ -38,13 +38,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.nlpcn</groupId>
-            <artifactId>nlp-lang</artifactId>
-            <version>1.7</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.21</version>

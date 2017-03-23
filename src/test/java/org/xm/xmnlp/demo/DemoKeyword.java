@@ -1,7 +1,6 @@
 package org.xm.xmnlp.demo;
 
 
-import org.junit.Test;
 import org.xm.xmnlp.Xmnlp;
 
 /**
@@ -27,8 +26,4 @@ public class DemoKeyword {
         System.out.println(Xmnlp.extractSummary(text, 3));
     }
 
-    @Test
-    public void testBatchFile(){
-
-    }
 }
