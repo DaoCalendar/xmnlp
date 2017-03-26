@@ -4,6 +4,7 @@ package org.xm.xmnlp.test.corpus;
 import junit.framework.TestCase;
 import org.xm.xmnlp.Xmnlp;
 import org.xm.xmnlp.dictionary.stopword.CoreStopWordDictionary;
+import org.xm.xmnlp.seg.domain.Result;
 import org.xm.xmnlp.seg.domain.Term;
 import org.xm.xmnlp.util.IOUtil;
 
@@ -19,7 +20,7 @@ public class TestLDA extends TestCase {
             if (folder.isDirectory()) {
                 for (File file : folder.listFiles()) {
                     System.out.println(file.getAbsolutePath());
-                    List<Term> termList = Xmnlp.segment(IOUtil.readTxt(file.getAbsolutePath()));
+                    Result termList = Xmnlp.segment(IOUtil.readTxt(file.getAbsolutePath()));
                     StringBuilder sbOut = new StringBuilder();
                     for (Term term : termList) {
                         if (CoreStopWordDictionary.shouldInclude(term)) {

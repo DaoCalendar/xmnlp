@@ -8,7 +8,7 @@ import org.xm.xmnlp.dictionary.traditionalsimplified.SimplifiedChineseDictionary
 import org.xm.xmnlp.dictionary.traditionalsimplified.TraditionalChineseDictionary;
 import org.xm.xmnlp.seg.Segment;
 import org.xm.xmnlp.seg.ViterbiSegment;
-import org.xm.xmnlp.seg.domain.Term;
+import org.xm.xmnlp.seg.domain.Result;
 import org.xm.xmnlp.summary.OrganizationExtractor;
 import org.xm.xmnlp.summary.PhraseExtractor;
 import org.xm.xmnlp.summary.TextRankKeyword;
@@ -220,11 +220,11 @@ public class Xmnlp {
                         }
                     }
                 }
-                /*sbInfo.append("Web项目则请放到下列目录：\n" +
+                sbInfo.append("Web项目则请放到下列目录：\n" +
                         "Webapp/WEB-INF/lib\n" +
                         "Webapp/WEB-INF/classes\n" +
                         "Appserver/lib\n" +
-                        "JRE/lib\n");*/
+                        "JRE/lib\n");
                 sbInfo.append("并且编辑root=PARENT/PATHS/to/your/data\n");
                 sbInfo.append("现在Xmnlp将尝试从").append(System.getProperties().get("user.dir")).append("读取data……");
                 logger.severe("没有找到xmnlp.properties，可能会导致找不到data\n" + sbInfo);
@@ -265,8 +265,8 @@ public class Xmnlp {
      * @param text 文本
      * @return 切分后的单词
      */
-    public static List<Term> segment(String text) {
-        return StandardTokenizer.segment(text.toCharArray());
+    public static Result segment(String text) {
+        return new Result(StandardTokenizer.segment(text.toCharArray()));
     }
 
     /**

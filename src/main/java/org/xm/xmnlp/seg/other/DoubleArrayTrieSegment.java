@@ -20,7 +20,7 @@ import java.util.List;
 public class DoubleArrayTrieSegment extends DictionaryBasedSegment {
     public DoubleArrayTrieSegment() {
         super();
-        config.useCustomDictionary = false;
+        tokenizerConfig.useCustomDictionary = false;
     }
 
     @Override
@@ -28,26 +28,26 @@ public class DoubleArrayTrieSegment extends DictionaryBasedSegment {
         char[] charArray = sentence;
         final int[] wordNet = new int[charArray.length];
         Arrays.fill(wordNet, 1);
-        final Nature[] natureArray = config.speechTagging ? new Nature[charArray.length] : null;
+        final Nature[] natureArray = tokenizerConfig.speechTagging ? new Nature[charArray.length] : null;
         DoubleArrayTrie<CoreDictionary.Attribute>.Searcher searcher =
                 CoreDictionary.trie.getSearcher(sentence, 0);
         while (searcher.next()) {
             int length = searcher.length;
             if (length > wordNet[searcher.begin]) {
                 wordNet[searcher.begin] = length;
-                if (config.speechTagging) {
+                if (tokenizerConfig.speechTagging) {
                     natureArray[searcher.begin] = searcher.value.nature[0];
                 }
             }
         }
-        if (config.useCustomDictionary) {
+        if (tokenizerConfig.useCustomDictionary) {
             CustomDictionary.parseText(charArray, new AhoCorasickDoubleArrayTrie.IHit<CoreDictionary.Attribute>() {
                 @Override
                 public void hit(int begin, int end, CoreDictionary.Attribute value) {
                     int length = end - begin;
                     if (length > wordNet[begin]) {
                         wordNet[begin] = length;
-                        if (config.speechTagging) {
+                        if (tokenizerConfig.speechTagging) {
                             natureArray[begin] = value.nature[0];
                         }
                     }
@@ -55,11 +55,11 @@ public class DoubleArrayTrieSegment extends DictionaryBasedSegment {
             });
         }
         LinkedList<Term> termLinkedList = new LinkedList<Term>();
-        if (config.speechTagging) {
+        if (tokenizerConfig.speechTagging) {
             getSpeechTagging(charArray, wordNet, natureArray);
         }
         for (int i = 0; i < wordNet.length; ) {
-            Term term = new Term(new String(charArray, i, wordNet[i]), config.speechTagging ? (natureArray[i] == null ? Nature.nz : natureArray[i]) : null);
+            Term term = new Term(new String(charArray, i, wordNet[i]), tokenizerConfig.speechTagging ? (natureArray[i] == null ? Nature.nz : natureArray[i]) : null);
             term.offset = i;
             termLinkedList.add(term);
             i += wordNet[i];

@@ -44,22 +44,22 @@ public class NShortSegment extends WordBasedModelSegment {
                 System.out.println("粗分结果" + convert(vertexList, false));
             }
             // 实体命名识别
-            if (config.ner) {
+            if (tokenizerConfig.ner) {
                 wordNetOptimum.addAll(vertexList);
                 int preSize = wordNetOptimum.size();
-                if (config.nameRecognize) {
+                if (tokenizerConfig.nameRecognize) {
                     PersonRecognition.recognition(vertexList, wordNetOptimum, wordNetAll);
                 }
-                if (config.translatedNameRecognize) {
+                if (tokenizerConfig.translatedNameRecognize) {
                     TranslatedPersonRecognition.recognition(vertexList, wordNetOptimum, wordNetAll);
                 }
-                if (config.japaneseNameRecognize) {
+                if (tokenizerConfig.japaneseNameRecognize) {
                     JapanesePersonRecognition.recognition(vertexList, wordNetOptimum, wordNetAll);
                 }
-                if (config.placeRecognize) {
+                if (tokenizerConfig.placeRecognize) {
                     PlaceRecognition.recognition(vertexList, wordNetOptimum, wordNetAll);
                 }
-                if (config.organizationRecognize) {
+                if (tokenizerConfig.organizationRecognize) {
                     // 层叠隐马模型——生成输出作为下一级隐马输入
                     vertexList = Dijkstra.compute(GenerateBiGraph(wordNetOptimum));
                     wordNetOptimum.addAll(vertexList);
@@ -82,25 +82,25 @@ public class NShortSegment extends WordBasedModelSegment {
         }
 
         // 数字识别
-        if (config.numberQuantifierRecognize) {
-            mergeNumberQuantifier(vertexList, wordNetAll, config);
+        if (tokenizerConfig.numberQuantifierRecognize) {
+            mergeNumberQuantifier(vertexList, wordNetAll, tokenizerConfig);
         }
 
         // 如果是索引模式则全切分
-        if (config.indexMode) {
+        if (tokenizerConfig.indexMode) {
             return decorateResultForIndexMode(vertexList, wordNetAll);
         }
 
         // 是否标注词性
-        if (config.speechTagging) {
+        if (tokenizerConfig.speechTagging) {
             speechTagging(vertexList);
         }
 
-        if (config.useCustomDictionary) {
+        if (tokenizerConfig.useCustomDictionary) {
             combineByCustomDictionary(vertexList);
         }
 
-        return convert(vertexList, config.offset);
+        return convert(vertexList, tokenizerConfig.offset);
     }
 
     /**
@@ -161,7 +161,7 @@ public class NShortSegment extends WordBasedModelSegment {
      * @return
      */
     public NShortSegment enablePartOfSpeechTagging(boolean enable) {
-        config.speechTagging = enable;
+        tokenizerConfig.speechTagging = enable;
         return this;
     }
 
@@ -172,8 +172,8 @@ public class NShortSegment extends WordBasedModelSegment {
      * @return
      */
     public NShortSegment enablePlaceRecognize(boolean enable) {
-        config.placeRecognize = enable;
-        config.updateNerConfig();
+        tokenizerConfig.placeRecognize = enable;
+        tokenizerConfig.updateNerConfig();
         return this;
     }
 
@@ -184,8 +184,8 @@ public class NShortSegment extends WordBasedModelSegment {
      * @return
      */
     public NShortSegment enableOrganizationRecognize(boolean enable) {
-        config.organizationRecognize = enable;
-        config.updateNerConfig();
+        tokenizerConfig.organizationRecognize = enable;
+        tokenizerConfig.updateNerConfig();
         return this;
     }
 
@@ -195,8 +195,8 @@ public class NShortSegment extends WordBasedModelSegment {
      * @param enable
      */
     public NShortSegment enableTranslatedNameRecognize(boolean enable) {
-        config.translatedNameRecognize = enable;
-        config.updateNerConfig();
+        tokenizerConfig.translatedNameRecognize = enable;
+        tokenizerConfig.updateNerConfig();
         return this;
     }
 
@@ -206,8 +206,8 @@ public class NShortSegment extends WordBasedModelSegment {
      * @param enable
      */
     public NShortSegment enableJapaneseNameRecognize(boolean enable) {
-        config.japaneseNameRecognize = enable;
-        config.updateNerConfig();
+        tokenizerConfig.japaneseNameRecognize = enable;
+        tokenizerConfig.updateNerConfig();
         return this;
     }
 
@@ -218,17 +218,17 @@ public class NShortSegment extends WordBasedModelSegment {
      * @return
      */
     public NShortSegment enableOffset(boolean enable) {
-        config.offset = enable;
+        tokenizerConfig.offset = enable;
         return this;
     }
 
     public NShortSegment enableAllNamedEntityRecognize(boolean enable) {
-        config.nameRecognize = enable;
-        config.japaneseNameRecognize = enable;
-        config.translatedNameRecognize = enable;
-        config.placeRecognize = enable;
-        config.organizationRecognize = enable;
-        config.updateNerConfig();
+        tokenizerConfig.nameRecognize = enable;
+        tokenizerConfig.japaneseNameRecognize = enable;
+        tokenizerConfig.translatedNameRecognize = enable;
+        tokenizerConfig.placeRecognize = enable;
+        tokenizerConfig.organizationRecognize = enable;
+        tokenizerConfig.updateNerConfig();
         return this;
     }
 

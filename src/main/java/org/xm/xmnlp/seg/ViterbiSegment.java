@@ -28,7 +28,7 @@ public class ViterbiSegment extends WordBasedModelSegment {
             System.out.printf("粗粉词网：\n%s \n", wordNetAll);
         }
         List<Vertex> vertexList = viterbi(wordNetAll);
-        if (config.useCustomDictionary) {
+        if (tokenizerConfig.useCustomDictionary) {
             combineByCustomDictionary(vertexList);
         }
 
@@ -36,27 +36,27 @@ public class ViterbiSegment extends WordBasedModelSegment {
             System.out.println("粗分结果" + convert(vertexList, false));
         }
         // 数字识别
-        if (config.numberQuantifierRecognize) {
-            mergeNumberQuantifier(vertexList, wordNetAll, config);
+        if (tokenizerConfig.numberQuantifierRecognize) {
+            mergeNumberQuantifier(vertexList, wordNetAll, tokenizerConfig);
         }
 
         // 实体命名识别
-        if (config.ner) {
+        if (tokenizerConfig.ner) {
             WordNet wordNetOptimum = new WordNet(sentence, vertexList);
             int preSize = wordNetOptimum.size();
-            if (config.nameRecognize) {
+            if (tokenizerConfig.nameRecognize) {
                 PersonRecognition.recognition(vertexList, wordNetOptimum, wordNetAll);
             }
-            if (config.translatedNameRecognize) {
+            if (tokenizerConfig.translatedNameRecognize) {
                 TranslatedPersonRecognition.recognition(vertexList, wordNetOptimum, wordNetAll);
             }
-            if (config.japaneseNameRecognize) {
+            if (tokenizerConfig.japaneseNameRecognize) {
                 JapanesePersonRecognition.recognition(vertexList, wordNetOptimum, wordNetAll);
             }
-            if (config.placeRecognize) {
+            if (tokenizerConfig.placeRecognize) {
                 PlaceRecognition.recognition(vertexList, wordNetOptimum, wordNetAll);
             }
-            if (config.organizationRecognize) {
+            if (tokenizerConfig.organizationRecognize) {
                 // 层叠隐马模型——生成输出作为下一级隐马输入
                 vertexList = viterbi(wordNetOptimum);
                 wordNetOptimum.clear();
@@ -73,15 +73,15 @@ public class ViterbiSegment extends WordBasedModelSegment {
         }
 
         // 如果是索引模式则全切分
-        if (config.indexMode) {
+        if (tokenizerConfig.indexMode) {
             return decorateResultForIndexMode(vertexList, wordNetAll);
         }
 
         // 是否标注词性
-        if (config.speechTagging) {
+        if (tokenizerConfig.speechTagging) {
             speechTagging(vertexList);
         }
-        return convert(vertexList, config.offset);
+        return convert(vertexList, tokenizerConfig.offset);
     }
 
     private static List<Vertex> viterbi(WordNet wordNet) {

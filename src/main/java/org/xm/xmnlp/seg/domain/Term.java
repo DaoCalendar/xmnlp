@@ -68,6 +68,7 @@ public class Term {
             return word + "/" + getNature();
         return word;
     }
+
     public String toString(String split) {
         if (Xmnlp.Config.ShowTermNature)
             return word + split + getNature();

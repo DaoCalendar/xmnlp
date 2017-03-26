@@ -360,4 +360,19 @@ public class StringUtil {
         if (isBlankOrNull(str)) return "null";
         return Pattern.compile("\\d|\\s").matcher(str).replaceAll("");
     }
+
+    /**
+     * 数字
+     *
+     * @param str
+     * @return
+     */
+    public static boolean isNumeric(String str) {
+        for (int i = str.length(); --i >= 0; ) {
+            if (!Character.isDigit(str.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

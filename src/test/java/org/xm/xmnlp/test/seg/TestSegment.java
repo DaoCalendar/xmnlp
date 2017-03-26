@@ -12,9 +12,9 @@ import org.xm.xmnlp.dictionary.other.CharType;
 import org.xm.xmnlp.seg.CRFSegment;
 import org.xm.xmnlp.seg.DijkstraSegment;
 import org.xm.xmnlp.seg.Segment;
+import org.xm.xmnlp.seg.ViterbiSegment;
 import org.xm.xmnlp.seg.domain.Term;
 import org.xm.xmnlp.seg.other.DoubleArrayTrieSegment;
-import org.xm.xmnlp.seg.ViterbiSegment;
 import org.xm.xmnlp.tokenizer.*;
 
 import java.util.Iterator;
@@ -99,7 +99,6 @@ public class TestSegment extends TestCase {
     }
 
     public void testIssue2() throws Exception {
-//        Xmnlp.Config.enableDebug();
         String text = "BENQphone";
         System.out.println(Xmnlp.segment(text));
         CustomDictionary.insert("BENQ");
@@ -221,7 +220,6 @@ public class TestSegment extends TestCase {
 
     public void testCRFSegment() throws Exception {
         Xmnlp.Config.enableDebug();
-//        Xmnlp.Config.ShowTermNature = false;
         Segment segment = new CRFSegment();
         System.out.println(segment.seg("有句谚语叫做一个萝卜一个坑儿"));
     }

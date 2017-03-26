@@ -63,7 +63,7 @@ public class CRFSegment extends Segment {
             }
         }
 
-        if (config.speechTagging) {
+        if (tokenizerConfig.speechTagging) {
             List<Vertex> vertexList = toVertexList(termList, true);
             Viterbi.compute(vertexList, CoreDictionaryTransformMatrixDictionary.transformMatrixDictionary);
             int i = 0;
@@ -73,10 +73,10 @@ public class CRFSegment extends Segment {
             }
         }
 
-        if (config.useCustomDictionary) {
+        if (tokenizerConfig.useCustomDictionary) {
             List<Vertex> vertexList = toVertexList(termList, false);
             combineByCustomDictionary(vertexList);
-            termList = toTermList(vertexList, config.offset);
+            termList = toTermList(vertexList, tokenizerConfig.offset);
         }
 
         return termList;

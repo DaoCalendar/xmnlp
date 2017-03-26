@@ -3,7 +3,7 @@ package org.xm.xmnlp.seg;
 /**
  * 分词器配置项
  */
-public class Config {
+public class TokenizerConfig {
     /**
      * 是否是索引分词（合理地最小分割）
      */

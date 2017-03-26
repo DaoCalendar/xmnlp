@@ -29,25 +29,25 @@ public class AhoCorasickDoubleArrayTrieSegment extends DictionaryBasedSegment {
         }
         final int[] wordNet = new int[sentence.length];
         Arrays.fill(wordNet, 1);
-        final Nature[] natureArray = config.speechTagging ? new Nature[sentence.length] : null;
+        final Nature[] natureArray = tokenizerConfig.speechTagging ? new Nature[sentence.length] : null;
         trie.parseText(sentence, new AhoCorasickDoubleArrayTrie.IHit<CoreDictionary.Attribute>() {
             @Override
             public void hit(int begin, int end, CoreDictionary.Attribute value) {
                 int length = end - begin;
                 if (length > wordNet[begin]) {
                     wordNet[begin] = length;
-                    if (config.speechTagging) {
+                    if (tokenizerConfig.speechTagging) {
                         natureArray[begin] = value.nature[0];
                     }
                 }
             }
         });
         LinkedList<Term> termList = new LinkedList<Term>();
-        if (config.speechTagging) {
+        if (tokenizerConfig.speechTagging) {
             DoubleArrayTrieSegment.getSpeechTagging(sentence, wordNet, natureArray);
         }
         for (int i = 0; i < wordNet.length; ) {
-            Term term = new Term(new String(sentence, i, wordNet[i]), config.speechTagging ? (natureArray[i] == null ? Nature.nz : natureArray[i]) : null);
+            Term term = new Term(new String(sentence, i, wordNet[i]), tokenizerConfig.speechTagging ? (natureArray[i] == null ? Nature.nz : natureArray[i]) : null);
             term.offset = i;
             termList.add(term);
             i += wordNet[i];
@@ -57,8 +57,8 @@ public class AhoCorasickDoubleArrayTrieSegment extends DictionaryBasedSegment {
 
     public AhoCorasickDoubleArrayTrieSegment() {
         super();
-        config.useCustomDictionary = false;
-        config.speechTagging = true;
+        tokenizerConfig.useCustomDictionary = false;
+        tokenizerConfig.speechTagging = true;
     }
 
     @Override
