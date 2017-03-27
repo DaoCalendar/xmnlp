@@ -3,7 +3,7 @@
 
 #### author：xuming(shibing624)
 #### environment：jdk 1.8
-
+#### 演示页面 http://www.borntowin.cn:8080/xmnlp
 
 1. add the rule chinese word segmentation: 2016.06.21
     - 正向最大匹配法
