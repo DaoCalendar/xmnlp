@@ -157,7 +157,7 @@ public class TextRankSentence {
     private static List<List<String>> convertSentenceListToDoc(List<String> sentenceList) {
         List<List<String>> docs = new ArrayList<List<String>>(sentenceList.size());
         for (String sentence : sentenceList) {
-            List<Term> termList = StandardTokenizer.segment(sentence.toCharArray());
+            List<Term> termList = StandardTokenizer.segment(sentence.toCharArray()).getTerms();
             List<String> wordList = new LinkedList<String>();
             for (Term term : termList) {
                 if (CoreStopWordDictionary.shouldInclude(term)) {

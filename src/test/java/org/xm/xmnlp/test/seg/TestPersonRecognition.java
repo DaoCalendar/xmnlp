@@ -15,9 +15,6 @@ import org.xm.xmnlp.util.SentencesUtil;
 import java.io.File;
 import java.util.List;
 
-/**
- * @author hankcs
- */
 public class TestPersonRecognition extends TestCase {
     static final String FOLDER = "D:\\Doc\\语料库\\上海静安\\";
 

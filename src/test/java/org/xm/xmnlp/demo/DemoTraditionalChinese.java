@@ -1,10 +1,7 @@
 package org.xm.xmnlp.demo;
 
 import org.xm.xmnlp.Xmnlp;
-import org.xm.xmnlp.seg.domain.Term;
 import org.xm.xmnlp.tokenizer.TraditionalChineseTokenizer;
-
-import java.util.List;
 
 /**
  * 繁体中文
@@ -16,8 +13,7 @@ public class DemoTraditionalChinese {
         String sentence = "大衛貝克漢不僅僅是名著名球員，球場以外，其妻為,等方面都具很大的影響力，在足球圈外所獲得,黑牛沟村捐赠了挖掘机";
         System.out.println("未开启繁体中文识别的效果：" + Xmnlp.segment("大衛貝克漢不僅僅是名著名球員,黑牛沟村捐赠了挖掘机，"));
 
-        List<Term> termList = TraditionalChineseTokenizer.segment(sentence);
-        System.out.println(termList);
+        System.out.println(TraditionalChineseTokenizer.segment(sentence));
 
         // 简繁转换
         System.out.println(Xmnlp.convertToTraditionalChinese("“以后等你当上皇后，就能买草莓庆祝了”。以後发现一根白头发"));

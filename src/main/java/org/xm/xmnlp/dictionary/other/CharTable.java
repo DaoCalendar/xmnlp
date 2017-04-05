@@ -40,7 +40,7 @@ public class CharTable {
             System.exit(-1);
         }
 
-//        System.out.println("字符正规化表加载成功：" + (System.currentTimeMillis() - start) + " ms");
+        //System.out.println("字符正规化表加载成功：" + (System.currentTimeMillis() - start) + " ms");
     }
 
     /**

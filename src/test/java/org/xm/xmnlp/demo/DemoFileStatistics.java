@@ -54,7 +54,6 @@ public class DemoFileStatistics {
     }
 
     public static void statistics(String filePath) throws IOException {
-
         //词频统计
         WordFreqStatistics statistic = new WordFreqStatistics(SEGMENT);
 

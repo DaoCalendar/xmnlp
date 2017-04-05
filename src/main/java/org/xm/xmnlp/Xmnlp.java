@@ -266,7 +266,7 @@ public class Xmnlp {
      * @return 切分后的单词
      */
     public static Result segment(String text) {
-        return new Result(StandardTokenizer.segment(text.toCharArray()));
+        return StandardTokenizer.segment(text.toCharArray());
     }
 
     /**

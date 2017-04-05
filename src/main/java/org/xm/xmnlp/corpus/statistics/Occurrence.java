@@ -206,7 +206,6 @@ public class Occurrence {
     }
 
     public void addAll(List<Term> resultList) {
-//        System.out.println(resultList);
         String[] termList = new String[resultList.size()];
         int i = 0;
         for (Term word : resultList) {
@@ -217,7 +216,7 @@ public class Occurrence {
     }
 
     public void addAll(String text) {
-        addAll(NotionalTokenizer.segment(text));
+        addAll(NotionalTokenizer.segment(text).getTerms());
     }
 
     @Override

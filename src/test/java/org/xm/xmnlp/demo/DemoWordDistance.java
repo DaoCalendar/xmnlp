@@ -4,6 +4,8 @@ import org.xm.xmnlp.dictionary.CoreSynonymDictionary;
 
 /**
  * 语义距离
+ * 需要设置内存1G
+ *
  */
 public class DemoWordDistance {
     public static void main(String[] args) {

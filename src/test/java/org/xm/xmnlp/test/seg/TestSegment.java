@@ -155,13 +155,13 @@ public class TestSegment extends TestCase {
     public void testIssue10() throws Exception {
         StandardTokenizer.SEGMENT.enableNumberQuantifierRecognize(true);
         IndexTokenizer.SEGMENT.enableNumberQuantifierRecognize(true);
-        List termList = StandardTokenizer.segment("此帐号有欠费业务是什么");
+        List termList = StandardTokenizer.segment("此帐号有欠费业务是什么").getTerms();
         System.out.println(termList);
-        termList = IndexTokenizer.segment("此帐号有欠费业务是什么");
+        termList = IndexTokenizer.segment("此帐号有欠费业务是什么").getTerms();
         System.out.println(termList);
-        termList = StandardTokenizer.segment("15307971214话费还有多少");
+        termList = StandardTokenizer.segment("15307971214话费还有多少").getTerms();
         System.out.println(termList);
-        termList = IndexTokenizer.segment("15307971214话费还有多少");
+        termList = IndexTokenizer.segment("15307971214话费还有多少").getTerms();
         System.out.println(termList);
     }
 
@@ -246,7 +246,7 @@ public class TestSegment extends TestCase {
     public void testIssue22() throws Exception {
         CoreDictionary.Attribute attribute = CoreDictionary.get("年");
         System.out.println(attribute);
-        List<Term> termList = StandardTokenizer.segment("三年");
+        List<Term> termList = StandardTokenizer.segment("三年").getTerms();
         System.out.println(termList);
         assertEquals(attribute.nature[0], termList.get(1).nature);
         System.out.println(StandardTokenizer.segment("三元"));

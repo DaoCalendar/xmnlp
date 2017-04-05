@@ -4,6 +4,7 @@ import org.xm.xmnlp.Xmnlp;
 import org.xm.xmnlp.dictionary.other.CharTable;
 import org.xm.xmnlp.dictionary.traditionalsimplified.SimplifiedChineseDictionary;
 import org.xm.xmnlp.seg.Segment;
+import org.xm.xmnlp.seg.domain.Result;
 import org.xm.xmnlp.seg.domain.Term;
 import org.xm.xmnlp.util.SentencesUtil;
 
@@ -47,12 +48,12 @@ public class TraditionalChineseTokenizer {
      * @param text 文本 String
      * @return 分词结果 List<Term>
      */
-    public static List<Term> segment(String text) {
+    public static Result segment(String text) {
         List<Term> termList = new LinkedList<Term>();
         for (String sentence : SentencesUtil.toSentenceList(text)) {
             termList.addAll(segSentence(sentence));
         }
-        return termList;
+        return new Result(termList);
     }
 
     /**
@@ -61,7 +62,7 @@ public class TraditionalChineseTokenizer {
      * @param text 文本 char[]
      * @return 分词结果 List<Term>
      */
-    public static List<Term> segment(char[] text) {
+    public static Result segment(char[] text) {
         return segment(CharTable.convert(text));
     }
 
@@ -74,7 +75,7 @@ public class TraditionalChineseTokenizer {
     public static List<List<Term>> seg2Sentence(String text) {
         List<List<Term>> resultList = new LinkedList<List<Term>>();
         for (String sentence : SentencesUtil.toSentenceList(text)) {
-            resultList.add(segment(sentence));
+            resultList.add(segment(sentence).getTerms());
         }
         return resultList;
     }

@@ -17,7 +17,7 @@ public class DemoURLRecognition {
                         "我有时候会在www.baidu.com上面发布一些消息，" +
                         "我的微博是http://weibo.com/baidu/，会同步推送baidu.com的新闻。" +
                         "听说.中国域名开放申请了,但我并没有申请baidu.中国,因为穷……";
-        List<Term> termList = URLTokenizer.segment(text);
+        List<Term> termList = URLTokenizer.segment(text).getTerms();
         System.out.println(termList);
         for (Term term : termList) {
             if (term.nature == Nature.xu)

@@ -38,13 +38,13 @@ public class Servlet {
         List<Pinyin> pinyinList = null;
         switch (methodEnum) {
             case BASE:
-                terms = StandardTokenizer.segment(input);
+                terms = StandardTokenizer.segment(input).getTerms();
                 break;
             case NLP:
-                terms = NLPTokenizer.segment(input);
+                terms = NLPTokenizer.segment(input).getTerms();
                 break;
             case INDEX:
-                terms = IndexTokenizer.segment(input);
+                terms = IndexTokenizer.segment(input).getTerms();
                 break;
             /*case CRF:
                 terms = new CRFSegment().seg(input);
@@ -59,11 +59,11 @@ public class Servlet {
                 pinyinList = Xmnlp.convertToPinyinList(input);
                 break;
             case TRADITIONALCHINESE:
-                terms = TraditionalChineseTokenizer.segment(input);
+                terms = TraditionalChineseTokenizer.segment(input).getTerms();
                 break;
             case SIMPLECHINESE:
                 String string = Xmnlp.convertToSimplifiedChinese(input);
-                terms = StandardTokenizer.segment(string);
+                terms = StandardTokenizer.segment(string).getTerms();
                 break;
             case KEYWORD:
                 List<String> keywordList = Xmnlp.extractKeyword(input, 5);
@@ -83,7 +83,7 @@ public class Servlet {
                 result.addAll(termList.stream().filter(i -> i.getNature().startsWith("nr")).map(i -> i.word).collect(Collectors.toList()));
                 return result.toString();
             default:
-                terms = StandardTokenizer.segment(input);
+                terms = StandardTokenizer.segment(input).getTerms();
         }
         if (terms != null) {
             return termToString(terms, nature, methodEnum);

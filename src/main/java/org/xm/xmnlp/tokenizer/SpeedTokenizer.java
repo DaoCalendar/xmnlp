@@ -1,6 +1,7 @@
 package org.xm.xmnlp.tokenizer;
 
 import org.xm.xmnlp.seg.Segment;
+import org.xm.xmnlp.seg.domain.Result;
 import org.xm.xmnlp.seg.domain.Term;
 import org.xm.xmnlp.seg.other.DoubleArrayTrieSegment;
 
@@ -15,8 +16,8 @@ import java.util.List;
 public class SpeedTokenizer {
     public static final Segment SEGMENT = new DoubleArrayTrieSegment();
 
-    public static List<Term> segment(String text) {
-        return SEGMENT.seg(text.toCharArray());
+    public static Result segment(String text) {
+        return segment(text.toCharArray());
     }
 
     /**
@@ -25,8 +26,8 @@ public class SpeedTokenizer {
      * @param text 文本
      * @return 分词结果
      */
-    public static List<Term> segment(char[] text) {
-        return SEGMENT.seg(text);
+    public static Result segment(char[] text) {
+        return new Result(SEGMENT.seg(text));
     }
 
     /**

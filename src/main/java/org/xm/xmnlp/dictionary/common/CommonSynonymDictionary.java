@@ -150,7 +150,7 @@ public class CommonSynonymDictionary {
     }
 
     public String rewrite(String text) {
-        List<Term> termList = StandardTokenizer.segment(text.toCharArray());
+        List<Term> termList = StandardTokenizer.segment(text.toCharArray()).getTerms();
         StringBuilder sbOut = new StringBuilder((int) (text.length() * 1.2));
         String preWord = Predefine.TAG_BEGIN;
         for (Term term : termList) {

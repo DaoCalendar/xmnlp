@@ -2,12 +2,9 @@ package org.xm.xmnlp.demo;
 
 
 import org.xm.xmnlp.dictionary.stopword.CoreStopWordDictionary;
-import org.xm.xmnlp.dictionary.stopword.Filter;
-import org.xm.xmnlp.seg.domain.Term;
+import org.xm.xmnlp.seg.domain.Result;
 import org.xm.xmnlp.tokenizer.NotionalTokenizer;
 import org.xm.xmnlp.tokenizer.StandardTokenizer;
-
-import java.util.List;
 
 /**
  * 演示如何去除停用词
@@ -21,20 +18,17 @@ public class DemoStopWord {
         CoreStopWordDictionary.remove("居民");
         System.out.println(NotionalTokenizer.segment(text));
         // 可以对任意分词器的结果执行过滤
-        List<Term> termList = StandardTokenizer.segment(text);
+        Result termList = StandardTokenizer.segment(text);
         System.out.println(termList);
-        CoreStopWordDictionary.apply(termList);
+        CoreStopWordDictionary.apply(termList.getTerms());
         System.out.println(termList);
         // 还可以自定义过滤逻辑
-        CoreStopWordDictionary.FILTER = new Filter() {
-            @Override
-            public boolean shouldInclude(Term term) {
-                switch (term.nature) {
-                    case nz:
-                        return !CoreStopWordDictionary.contains(term.word);
-                }
-                return false;
+        CoreStopWordDictionary.FILTER = term -> {
+            switch (term.nature) {
+                case nz:
+                    return !CoreStopWordDictionary.contains(term.word);
             }
+            return false;
         };
         System.out.println(NotionalTokenizer.segment(text));
     }

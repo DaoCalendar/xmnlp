@@ -5,7 +5,7 @@ import org.xm.xmnlp.Xmnlp;
 /**
  * Xmnlp第一个Demo，启动加载词典到缓存
  *
- * Created by xuming on 2016/7/20.
+ * @author xuming
  */
 public class DemoAtFirstSight {
     public static void main(String[] args) {

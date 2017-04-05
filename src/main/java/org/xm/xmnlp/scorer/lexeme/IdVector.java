@@ -17,7 +17,7 @@ public class IdVector implements Comparable<IdVector>, ISentenceKey<IdVector> {
     public List<Long[]> idArrayList;
 
     public IdVector(String sentence) {
-        this(CoreSynonymDictionaryEx.convert(IndexTokenizer.segment(sentence), false));
+        this(CoreSynonymDictionaryEx.convert(IndexTokenizer.segment(sentence).getTerms(), false));
     }
 
     public IdVector(List<Long[]> idArrayList) {

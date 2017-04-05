@@ -4,6 +4,7 @@ import org.xm.xmnlp.Xmnlp;
 import org.xm.xmnlp.dictionary.stopword.CoreStopWordDictionary;
 import org.xm.xmnlp.dictionary.stopword.Filter;
 import org.xm.xmnlp.seg.Segment;
+import org.xm.xmnlp.seg.domain.Result;
 import org.xm.xmnlp.seg.domain.Term;
 
 import java.util.List;
@@ -17,11 +18,11 @@ public class NotionalTokenizer {
 
     private static final Segment SEGMENT = Xmnlp.newSegment();
 
-    public static List<Term> segment(String text) {
+    public static Result segment(String text) {
         return segment(text.toCharArray());
     }
 
-    private static List<Term> segment(char[] text) {
+    private static Result segment(char[] text) {
         List<Term> resultList = SEGMENT.seg(text);
         ListIterator<Term> listIterator = resultList.listIterator();
         while (listIterator.hasNext()) {
@@ -29,7 +30,7 @@ public class NotionalTokenizer {
                 listIterator.remove();
             }
         }
-        return resultList;
+        return new Result(resultList);
     }
 
     /**

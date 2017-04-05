@@ -3,6 +3,7 @@ package org.xm.xmnlp.tokenizer;
 
 import org.xm.xmnlp.Xmnlp;
 import org.xm.xmnlp.seg.Segment;
+import org.xm.xmnlp.seg.domain.Result;
 import org.xm.xmnlp.seg.domain.Term;
 
 import java.util.List;
@@ -16,8 +17,8 @@ public class IndexTokenizer {
      */
     public static final Segment SEGMENT = Xmnlp.newSegment().enableIndexMode(true);
 
-    public static List<Term> segment(String text) {
-        return SEGMENT.seg(text);
+    public static Result segment(String text) {
+        return new Result(SEGMENT.seg(text));
     }
 
     /**
@@ -26,8 +27,8 @@ public class IndexTokenizer {
      * @param text 文本
      * @return 分词结果
      */
-    public static List<Term> segment(char[] text) {
-        return SEGMENT.seg(text);
+    public static Result segment(char[] text) {
+        return new Result(SEGMENT.seg(text));
     }
 
     /**
