@@ -788,9 +788,8 @@ public class AhoCorasickDoubleArrayTrie<V> {
 
             for (Map.Entry<Integer, State> sibling : siblings) {
                 List<Map.Entry<Integer, State>> new_siblings = new ArrayList<Map.Entry<Integer, State>>(sibling.getValue().getSuccess().entrySet().size() + 1);
-
-                if (fetch(sibling.getValue(), new_siblings) == 0)  // 一个词的终止且不为其他词的前缀，其实就是叶子节点
-                {
+                // 一个词的终止且不为其他词的前缀，其实就是叶子节点
+                if (fetch(sibling.getValue(), new_siblings) == 0) {
                     base[begin + sibling.getKey()] = (-sibling.getValue().getLargestValueId() - 1);
                     progress++;
                 } else {

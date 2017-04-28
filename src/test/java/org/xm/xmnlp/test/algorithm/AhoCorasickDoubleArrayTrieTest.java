@@ -146,7 +146,7 @@ public class AhoCorasickDoubleArrayTrieTest extends TestCase {
         act.build(map);
         System.out.println("构建耗时：" + (System.currentTimeMillis() - timeMillis) + " ms");
 
-        LinkedList<String> lineList = IOUtil.readLineList("D:\\Doc\\语料库\\《我的团长我的团》.txt");
+        LinkedList<String> lineList = IOUtil.readLineList("C:\\Temp\\test.txt");
         timeMillis = System.currentTimeMillis();
         for (String sentence : lineList) {
 //            System.out.println(sentence);
@@ -154,7 +154,7 @@ public class AhoCorasickDoubleArrayTrieTest extends TestCase {
             for (AhoCorasickDoubleArrayTrie<String>.Hit<String> entry : entryList) {
                 int end = entry.end;
                 int start = entry.begin;
-//                System.out.printf("[%d:%d]=%s\n", start, end, entry.value);
+                System.out.printf("[%d:%d]=%s\n", start, end, entry.value);
 
                 assertEquals(sentence.substring(start, end), entry.value);
             }

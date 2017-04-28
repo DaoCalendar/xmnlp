@@ -6,10 +6,7 @@ import org.xm.xmnlp.collection.DartMap;
 import org.xm.xmnlp.collection.trie.DoubleArrayTrie;
 import org.xm.xmnlp.util.IOUtil;
 
-import java.util.Random;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import java.util.*;
 
 public class DartMapTest extends TestCase {
     private static final String DATA_TEST_OUT_BIN = "data/out.bin";
@@ -108,4 +105,53 @@ public class DartMapTest extends TestCase {
          * 结论，虽然很省内存，但是速度不理想
          */
     }
+
+    public void testTrie() throws Exception {
+        IOUtil.LineIterator iterator = new IOUtil.LineIterator("data/dictionary/CoreNatureDictionary.mini.txt");
+        TreeMap<String, String[]> map = new TreeMap<>();
+        while (iterator.hasNext()) {
+            String[] split = iterator.next().split("\\s");
+            String[] value = new String[3];
+            value[0] = split[1];
+            value[1] = split[2];
+            value[2] = split[0];
+            map.put(split[0], value);
+        }
+
+        long start = System.currentTimeMillis();
+        DoubleArrayTrie<String[]> trie = new DoubleArrayTrie<String[]>();
+        trie.build(map);
+        System.out.printf("build map: %d ms\n", System.currentTimeMillis() - start);
+        // TreeMap
+        start = System.currentTimeMillis();
+        for (Map.Entry<String, String[]> entry : map.entrySet()) {
+            if (entry.getKey().equals("龟甲")) {
+                String[] val = entry.getValue();
+                System.out.println(val[0] + val[1] + val[2]);
+            }
+//            assertEquals(entry.getKey(), entry.getValue()[2]);
+        }
+        System.out.printf("TreeMap: %d ms\n", System.currentTimeMillis() - start);
+
+        // DAT
+        start = System.currentTimeMillis();
+//        for (Map.Entry<String, String[]> entry : map.entrySet()) {
+//            assertEquals(entry.getKey(), trie.get(entry.getKey())[2]);
+//        }
+        String[] val = trie.get("龟甲");
+        System.out.println(val[0] + val[1] + val[2]);
+        System.out.printf("DAT: %d ms\n", System.currentTimeMillis() - start);
+
+        /**
+         * result:
+         * build map: 216 ms
+         * n1龟甲
+         * TreeMap: 10 ms
+         * n1龟甲
+         * DAT: 0 ms
+         *
+         * 结论，很省内存，速度理想
+         */
+    }
+
 }
