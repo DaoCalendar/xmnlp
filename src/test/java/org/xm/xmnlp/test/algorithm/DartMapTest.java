@@ -107,6 +107,7 @@ public class DartMapTest extends TestCase {
     }
 
     public void testTrie() throws Exception {
+        validKeySet = new TreeSet<String>();
         IOUtil.LineIterator iterator = new IOUtil.LineIterator("data/dictionary/CoreNatureDictionary.mini.txt");
         TreeMap<String, String[]> map = new TreeMap<>();
         while (iterator.hasNext()) {
@@ -116,31 +117,57 @@ public class DartMapTest extends TestCase {
             value[1] = split[2];
             value[2] = split[0];
             map.put(split[0], value);
+            if (validKeySet.size() < 200)
+                validKeySet.add(split[0]);
         }
 
         long start = System.currentTimeMillis();
         DoubleArrayTrie<String[]> trie = new DoubleArrayTrie<String[]>();
         trie.build(map);
         System.out.printf("build map: %d ms\n", System.currentTimeMillis() - start);
-        // TreeMap
+
+        // TreeMap one word
         start = System.currentTimeMillis();
         for (Map.Entry<String, String[]> entry : map.entrySet()) {
             if (entry.getKey().equals("龟甲")) {
                 String[] val = entry.getValue();
                 System.out.println(val[0] + val[1] + val[2]);
             }
-//            assertEquals(entry.getKey(), entry.getValue()[2]);
         }
+        System.out.printf("TreeMap one word: %d ms\n", System.currentTimeMillis() - start);
+        // TreeMap
+        start = System.currentTimeMillis();
+        int count = 0;
+        for (String key : validKeySet) {
+            for (Map.Entry<String, String[]> entry : map.entrySet()) {
+                if (entry.getKey().equals(key)) {
+                    if (entry.getValue() != null && entry.getValue().length > 1)
+                        count++;
+                }
+            }
+
+        }
+        System.out.println("TreeMap count:" + count);
         System.out.printf("TreeMap: %d ms\n", System.currentTimeMillis() - start);
+
+        // DAT one word
+        start = System.currentTimeMillis();
+        String[] val = trie.get("龟甲");
+        System.out.println(val[0] + val[1] + val[2]);
+        System.out.printf("DAT one word: %d ms\n", System.currentTimeMillis() - start);
 
         // DAT
         start = System.currentTimeMillis();
-//        for (Map.Entry<String, String[]> entry : map.entrySet()) {
-//            assertEquals(entry.getKey(), trie.get(entry.getKey())[2]);
-//        }
-        String[] val = trie.get("龟甲");
-        System.out.println(val[0] + val[1] + val[2]);
-        System.out.printf("DAT: %d ms\n", System.currentTimeMillis() - start);
+        count = 0;
+        for (String key : validKeySet) {
+            String[] value = trie.get(key);
+            if (value != null && value.length > 1) {
+                System.out.println(value[0] + value[1] + value[2]);
+                count++;
+            }
+        }
+        System.out.println("DAT count:" + count);
+        System.out.printf("DAT : %d ms\n", System.currentTimeMillis() - start);
 
         /**
          * result:
